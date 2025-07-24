@@ -22,8 +22,8 @@ namespace Pagina_Policia_Per.Services
                     Id = 1,
                     Titulo = "Exitosa Capacitación en Ciberdelitos para Personal de Investigaciones",
                     Resumen = "Más de 50 oficiales completaron el curso avanzado sobre nuevas modalidades de estafas virtuales.",
-                    Contenido = "Durante tres jornadas intensivas, personal de la División Investigaciones recibió formación de vanguardia en la lucha contra el ciberdelito...",
-                    ImagenUrl = "~/img/noticias/ciberseguridad.jpg",
+                    Contenido = "Durante tres jornadas intensivas...",
+                    ImagenUrl = "/img/noticias/ciberseguridad.jpg", // <-- CORREGIDO
                     FechaPublicacion = DateTime.Now.AddDays(-1)
                 },
                 new Noticia
@@ -31,19 +31,19 @@ namespace Pagina_Policia_Per.Services
                     Id = 2,
                     Titulo = "Nuevos Móviles Refuerzan la Prevención en Zonas Rurales",
                     Resumen = "Se incorporaron 10 camionetas 4x4 equipadas para mejorar el patrullaje.",
-                    Contenido = "En un acto presidido por el Jefe de Policía, se hizo entrega oficial de diez nuevas unidades móviles...",
-                    ImagenUrl = "~/img/noticias/nuevos-moviles.jpg",
+                    Contenido = "En un acto presidido por el Jefe de Policía...",
+                    ImagenUrl = "/img/noticias/nuevos-moviles.jpg", // <-- CORREGIDO
                     FechaPublicacion = DateTime.Now.AddDays(-5)
                 },
-                new Noticia
+                 new Noticia
                 {
                     Id = 3,
                     Titulo = "Alerta por Estafas Telefónicas: No Brinde Datos Personales",
                     Resumen = "La División Delitos Económicos reitera la importancia de no compartir claves bancarias.",
-                    Contenido = "Ante el aumento de denuncias por estafas telefónicas, la Policía de Entre Ríos recuerda a la comunidad...",
-                    ImagenUrl = "~/img/noticias/alerta-estafas.jpg",
+                    Contenido = "Ante el aumento de denuncias por estafas telefónicas...",
+                    ImagenUrl = "/img/noticias/alerta-estafas.jpg", // <-- CORREGIDO
                     FechaPublicacion = DateTime.Now.AddDays(-3)
-                }
+                },
             };
 
             foreach (var noticia in _noticias)
