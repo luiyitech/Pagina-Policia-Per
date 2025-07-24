@@ -1,9 +1,8 @@
 ﻿@{
-    // Esto define el título que aparecerá en la pestaña del navegador
-    ViewData["Title"] = "Página de Inicio";
+    ViewData["Title"] = "Bienvenido";
 }
 
-<!-- HERO VIDEO DE INICIO -->
+<!-- 1. HERO VIDEO (Se mantiene igual) -->
 <div id="inicio" class="hero-section">
     <video playsinline autoplay muted loop poster="~/img/poster-placeholder.jpg" class="hero-video">
         <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
@@ -12,91 +11,62 @@
     <div class="hero-content text-center text-white">
         <h1 class="display-3 fw-bold">Compromiso y Servicio</h1>
         <p class="lead mb-4">Protegiendo a la comunidad de Entre Ríos las 24 horas.</p>
-        <a href="#tramites" class="btn btn-primary btn-lg">Realizar un Trámite</a>
-        <a href="#contacto" class="btn btn-outline-light btn-lg">Teléfonos Útiles</a>
+        <a class="btn btn-primary btn-lg" asp-controller="Tramites" asp-action="Index">Realizar un Trámite</a>
+        <a class="btn btn-outline-light btn-lg" href="#contacto">Teléfonos Útiles</a>
     </div>
 </div>
 
-<!-- CONTENIDO PRINCIPAL -->
-<main class="container-fluid p-0">
+<main>
+    <!-- 2. SECCIÓN DE ACCESOS RÁPIDOS (Se mantiene, es información clave) -->
     <div class="bg-light">
         <div class="container py-5">
-            <!-- SECCIÓN ACCESOS RÁPIDOS (Ahora como HTML estático) -->
+            <h2 class="section-title">Accesos Directos</h2>
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4 icon-card">
-                    <div class="card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <i class="fas fa-file-certificate"></i>
-                            <h5 class="card-title mt-3">Certificados</h5>
-                            <p class="card-text flex-grow-1">Obtén tus certificados de antecedentes y domicilio.</p>
-                            <a href="#" class="btn btn-primary mt-auto">Acceder</a>
-                        </div>
-                    </div>
+                <!-- Aquí mantienes las 4 tarjetas de íconos que ya teníamos -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. NUEVA SECCIÓN: "ÚLTIMAS NOTICIAS DESTACADAS" -->
+    <div class="container py-5">
+        <h2 class="section-title">Actualidad Policial</h2>
+        <div class="row">
+            <!-- Más adelante, el Controlador seleccionará las 3 noticias más importantes y las mostrará aquí -->
+            <!-- Ejemplo estático por ahora: -->
+            <div class="col-lg-4 col-md-6 mb-4 news-card"> <!-- Tarjeta de Noticia 1 --> </div>
+            <div class="col-lg-4 col-md-6 mb-4 news-card"> <!-- Tarjeta de Noticia 2 --> </div>
+            <div class="col-lg-4 col-md-6 mb-4 news-card"> <!-- Tarjeta de Noticia 3 --> </div>
+        </div>
+        <div class="text-center mt-4">
+            <a class="btn btn-outline-primary" asp-controller="Noticias" asp-action="Index">Ver Todas las Noticias</a>
+        </div>
+    </div>
+
+    <!-- 4. NUEVA SECCIÓN: "CIFRAS QUE INSPIRAN CONFIANZA" (Para vender la imagen) -->
+    <div class="bg-dark text-white">
+        <div class="container py-5 text-center">
+            <h2 class="section-title" style="color:white;">Nuestra Labor en Números</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <h3 class="display-4 fw-bold">+1,500</h3>
+                    <p class="lead">Operativos Mensuales</p>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 icon-card">
-                    <div class="card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <i class="fas fa-calendar-check"></i>
-                            <h5 class="card-title mt-3">Turnos Online</h5>
-                            <p class="card-text flex-grow-1">Solicita y gestiona tus turnos para trámites.</p>
-                            <a href="#" class="btn btn-primary mt-auto">Acceder</a>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <h3 class="display-4 fw-bold">+500</h3>
+                    <p class="lead">Nuevos Cadetes en Formación</p>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 icon-card">
-                    <div class="card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <i class="fas fa-bullhorn"></i>
-                            <h5 class="card-title mt-3">Denuncias</h5>
-                            <p class="card-text flex-grow-1">Realiza tu denuncia de forma segura y confidencial.</p>
-                            <a href="#" class="btn btn-primary mt-auto">Acceder</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4 icon-card">
-                    <div class="card h-100">
-                        <div class="card-body d-flex flex-column">
-                            <i class="fas fa-graduation-cap"></i>
-                            <h5 class="card-title mt-3">Capacitación</h5>
-                            <p class="card-text flex-grow-1">Infórmate sobre las carreras y cursos disponibles.</p>
-                            <a href="#" class="btn btn-primary mt-auto">Acceder</a>
-                        </div>
-                    </div>
+                <div class="col-md-4">
+                    <h3 class="display-4 fw-bold">24/7</h3>
+                    <p class="lead">Protección Continua</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SECCIÓN NOTICIAS -->
-    <div class="container py-5">
-        <section id="noticias" class="py-5">
-            <h2 class="section-title">Últimas Noticias</h2>
-            <!-- Más adelante, esta sección se llenará con un bucle que recorra los datos de la base de datos -->
-        </section>
-    </div>
-
-    <!-- SECCIÓN TRÁMITES -->
-    <div class="bg-white">
-        <div class="container py-5 rounded shadow-sm my-5">
-            <section id="tramites">
-                <h2 class="section-title">Trámites y Servicios</h2>
-            </section>
-        </div>
-    </div>
-
-    <!-- SECCIÓN INSTITUCIONAL -->
-    <div class="container py-5">
-        <section id="institucional" class="py-5">
-            <h2 class="section-title">Nuestra Institución</h2>
-            <div class="row align-items-center">
-                <div class="col-md-7">
-                    <h3>Misión y Visión</h3>
-                    <p>Somos una institución al servicio de la comunidad, comprometida con la prevención del delito, la protección de los ciudadanos y el mantenimiento del orden público en toda la provincia de Entre Ríos. Nuestra visión es ser una fuerza de seguridad moderna, profesional, y cercana a la gente.</p>
-                </div>
-                <div class="col-md-5">
-                    <img src="https://via.placeholder.com/500x350/ADB5BD/FFFFFF?text=Edificio+Institucional" class="img-fluid rounded shadow" alt="Edificio Institucional">
-                </div>
-            </div>
-        </section>
+    <!-- 5. NUEVA SECCIÓN: LLAMADA A LA ACCIÓN (Call to Action) -->
+    <div class="container py-5 text-center">
+        <h2 class="section-title">Únete a la Fuerza</h2>
+        <p class="lead mb-4">Forma parte de una institución con historia y vocación de servicio. </p>
+        <a href="#" class="btn btn-primary btn-lg">Conviértete en Cadete</a>
     </div>
 </main>

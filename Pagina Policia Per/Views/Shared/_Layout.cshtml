@@ -14,39 +14,56 @@
 
     <!-- ¡IMPORTANTE! Esta es la forma correcta de enlazar tu CSS en .NET. -->
     <!-- La tilde (~) apunta a la raíz de la carpeta wwwroot. -->
-    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-nav">
             <div class="container">
-                <!-- Este enlace apunta a la página de inicio (Acción "Index" del "HomeController") -->
+
+                <!-- 1. Enlace del Logo (apunta a la página de inicio) -->
                 <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
                     <i class="fas fa-shield-halved fa-2x me-2"></i>
                     <span class="fw-bold">Policía de Entre Ríos</span>
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+                <!-- 2. Botón para el menú en móviles -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
+
+                <!-- 3. Contenedor de los enlaces del menú (la parte que se colapsa en móviles) -->
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <!-- La clase "ms-auto" en este <ul> es la clave para alinear todo a la derecha -->
                     <ul class="navbar-nav ms-auto">
-                        <!-- Estos son los nuevos "Tag Helpers" de MVC para crear links -->
-                        <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Noticias</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Trámites</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Por ahora apunta a #, luego será asp-controller="Noticias" asp-action="Index" -->
+                            <a class="nav-link" href="#">Noticias</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Trámites</a>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Institucional
                             </a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-dark">
+                                <!-- Añadido dropdown-menu-dark para que combine -->
                                 <li><a class="dropdown-item" href="#">Misión y Visión</a></li>
                                 <li><a class="dropdown-item" href="#">Plana Mayor</a></li>
                                 <li><a class="dropdown-item" href="#">Historia</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contacto</a></li>
+                        <li class="nav-item">
+                            <!-- El footer ya tiene id="contacto", así que un link directo funciona bien -->
+                            <a class="nav-link" href="#contacto">Contacto</a>
+                        </li>
                     </ul>
                 </div>
+
             </div>
         </nav>
     </header>
