@@ -1,8 +1,10 @@
-﻿@{
+﻿@model IEnumerable<Pagina_Policia_Per.Models.Noticia>
+
+@{
     ViewData["Title"] = "Bienvenido";
 }
 
-<!-- 1. HERO VIDEO (Se mantiene igual) -->
+<!-- 1. HERO VIDEO DE INICIO (Sección de bienvenida visual) -->
 <div id="inicio" class="hero-section">
     <video playsinline autoplay muted loop poster="~/img/poster-placeholder.jpg" class="hero-video">
         <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4" type="video/mp4">
@@ -17,32 +19,84 @@
 </div>
 
 <main>
-    <!-- 2. SECCIÓN DE ACCESOS RÁPIDOS (Se mantiene, es información clave) -->
+    <!-- 2. SECCIÓN DE ACCESOS RÁPIDOS (Información clave y útil) -->
     <div class="bg-light">
         <div class="container py-5">
             <h2 class="section-title">Accesos Directos</h2>
             <div class="row">
-                <!-- Aquí mantienes las 4 tarjetas de íconos que ya teníamos -->
+                <div class="col-lg-3 col-md-6 mb-4 icon-card">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <i class="fas fa-file-certificate"></i>
+                            <h5 class="card-title mt-3">Certificados</h5>
+                            <p class="card-text flex-grow-1">Obtén tus certificados de antecedentes y domicilio.</p>
+                            <a asp-controller="Tramites" asp-action="Certificados" class="btn btn-primary mt-auto">Acceder</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 icon-card">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <i class="fas fa-calendar-check"></i>
+                            <h5 class="card-title mt-3">Turnos Online</h5>
+                            <p class="card-text flex-grow-1">Solicita y gestiona tus turnos para trámites.</p>
+                            <a asp-controller="Tramites" asp-action="Turnos" class="btn btn-primary mt-auto">Acceder</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 icon-card">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <i class="fas fa-bullhorn"></i>
+                            <h5 class="card-title mt-3">Denuncias Online</h5>
+                            <p class="card-text flex-grow-1">Realiza tu denuncia de forma segura y confidencial.</p>
+                            <a asp-controller="Denuncias" asp-action="Index" class="btn btn-primary mt-auto">Acceder</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 icon-card">
+                    <div class="card h-100">
+                        <div class="card-body d-flex flex-column">
+                            <i class="fas fa-graduation-cap"></i>
+                            <h5 class="card-title mt-3">Capacitación</h5>
+                            <p class="card-text flex-grow-1">Infórmate sobre las carreras y cursos disponibles.</p>
+                            <a asp-controller="Capacitacion" asp-action="Index" class="btn btn-primary mt-auto">Acceder</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- 3. NUEVA SECCIÓN: "ÚLTIMAS NOTICIAS DESTACADAS" -->
+    <!-- 3. SECCIÓN "ÚLTIMAS NOTICIAS DESTACADAS" (Contenido dinámico) -->
     <div class="container py-5">
         <h2 class="section-title">Actualidad Policial</h2>
         <div class="row">
-            <!-- Más adelante, el Controlador seleccionará las 3 noticias más importantes y las mostrará aquí -->
-            <!-- Ejemplo estático por ahora: -->
-            <div class="col-lg-4 col-md-6 mb-4 news-card"> <!-- Tarjeta de Noticia 1 --> </div>
-            <div class="col-lg-4 col-md-6 mb-4 news-card"> <!-- Tarjeta de Noticia 2 --> </div>
-            <div class="col-lg-4 col-md-6 mb-4 news-card"> <!-- Tarjeta de Noticia 3 --> </div>
+
+            <!-- Este bucle generará una tarjeta por cada noticia que el HomeController le envíe (máximo 3) -->
+            @foreach (var noticia in Model)
+            {
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch news-card">
+                    <div class="card h-100 w-100">
+                        <img src="@noticia.ImagenUrl" class="card-img-top" alt="@noticia.Titulo">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@noticia.Titulo</h5>
+                            <p class="card-text flex-grow-1">@noticia.Resumen</p>
+                            <p class="card-text mt-2"><small class="text-muted">Publicado: @noticia.FechaPublicacion.ToShortDateString()</small></p>
+                            <!-- El enlace apunta a la página de detalle de la noticia específica -->
+                            <a asp-controller="Noticias" asp-action="Detalle" asp-route-id="@noticia.Id" class="btn btn-outline-primary mt-auto">Leer más</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
         </div>
         <div class="text-center mt-4">
-            <a class="btn btn-outline-primary" asp-controller="Noticias" asp-action="Index">Ver Todas las Noticias</a>
+            <a class="btn btn-primary" asp-controller="Noticias" asp-action="Index">Ver Todas las Noticias</a>
         </div>
     </div>
 
-    <!-- 4. NUEVA SECCIÓN: "CIFRAS QUE INSPIRAN CONFIANZA" (Para vender la imagen) -->
+    <!-- 4. SECCIÓN "CIFRAS QUE INSPIRAN CONFIANZA" (Para marketing institucional) -->
     <div class="bg-dark text-white">
         <div class="container py-5 text-center">
             <h2 class="section-title" style="color:white;">Nuestra Labor en Números</h2>
@@ -53,7 +107,7 @@
                 </div>
                 <div class="col-md-4">
                     <h3 class="display-4 fw-bold">+500</h3>
-                    <p class="lead">Nuevos Cadetes en Formación</p>
+                    <p class="lead">Agentes en Formación</p>
                 </div>
                 <div class="col-md-4">
                     <h3 class="display-4 fw-bold">24/7</h3>
@@ -63,10 +117,10 @@
         </div>
     </div>
 
-    <!-- 5. NUEVA SECCIÓN: LLAMADA A LA ACCIÓN (Call to Action) -->
+    <!-- 5. SECCIÓN LLAMADA A LA ACCIÓN (Call to Action) -->
     <div class="container py-5 text-center">
         <h2 class="section-title">Únete a la Fuerza</h2>
-        <p class="lead mb-4">Forma parte de una institución con historia y vocación de servicio. </p>
-        <a href="#" class="btn btn-primary btn-lg">Conviértete en Cadete</a>
+        <p class="lead mb-4">Forma parte de una institución con historia y vocación de servicio. Conoce los requisitos para la inscripción.</p>
+        <a asp-controller="Capacitacion" asp-action="Inscripciones" class="btn btn-primary btn-lg">Conviértete en Cadete</a>
     </div>
 </main>

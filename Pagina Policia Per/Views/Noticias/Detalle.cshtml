@@ -1,0 +1,37 @@
+﻿<!-- Archivo: Views/Noticias/Detalle.cshtml -->
+@model Pagina_Policia_Per.Models.Noticia
+
+@{
+    ViewData["Title"] = Model.Titulo;
+}
+
+<div class="container my-5 pt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+
+            <!-- Título del Artículo -->
+            <h1 class="display-5 fw-bold">@Model.Titulo</h1>
+
+            <!-- Información (Fecha) -->
+            <p class="text-muted">
+                Publicado el @Model.FechaPublicacion.ToString("dd 'de' MMMM 'de' yyyy")
+            </p>
+
+            <!-- Imagen Principal -->
+            <img src="@Model.ImagenUrl" class="img-fluid rounded my-4" alt="@Model.Titulo">
+
+            <!-- Contenido del Artículo -->
+            <div class="lead">
+                @Html.Raw(Model.Contenido)
+            </div>
+
+            <hr class="my-5">
+
+            <!-- Botón para volver a la lista -->
+            <a asp-controller="Noticias" asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Noticias
+            </a>
+
+        </div>
+    </div>
+</div>

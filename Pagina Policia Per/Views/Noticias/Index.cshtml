@@ -19,7 +19,7 @@
                         <h5 class="card-title">@noticia.Titulo</h5>
                         <p class="card-text flex-grow-1">@noticia.Resumen</p>
                         <p class="card-text mt-2"><small class="text-muted">Publicado: @noticia.FechaPublicacion.ToShortDateString()</small></p>
-                        <a asp-controller="Noticias" asp-action="Detalle" asp-route-id="@noticia.Id" class="btn btn-outline-primary mt-auto">Leer más</a>
+                        <a asp-controller="Noticias" asp-action="Detalle" asp-route-slug="@noticia.Slug" class="btn btn-outline-primary mt-auto">Leer más</a>
                     </div>
                 </div>
             </div>

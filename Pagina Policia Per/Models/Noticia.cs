@@ -8,5 +8,6 @@
         public string Contenido { get; set; }
         public string ImagenUrl { get; set; }
         public DateTime FechaPublicacion { get; set; }
+        public string Slug { get; set; }
     }
 }
