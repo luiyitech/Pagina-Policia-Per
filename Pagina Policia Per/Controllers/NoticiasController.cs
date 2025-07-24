@@ -62,7 +62,7 @@ namespace Pagina_Policia_Per.Controllers
                     Titulo = "Exitosa Capacitación en Ciberdelitos para Personal de Investigaciones",
                     Resumen = "Más de 50 oficiales completaron el curso avanzado sobre nuevas modalidades de estafas virtuales.",
                     Contenido = "Durante tres jornadas intensivas, personal de la División Investigaciones recibió formación de vanguardia en la lucha contra el ciberdelito. Los temas incluyeron phishing, ransomware y técnicas de ingeniería social. El curso fue dictado por expertos en seguridad informática y culminó con ejercicios prácticos de análisis forense digital, fortaleciendo las capacidades de nuestra fuerza para enfrentar los desafíos delictivos del siglo XXI.",
-                    ImagenUrl = "https://via.placeholder.com/800x400/0d6efd/FFFFFF?text=Ciberseguridad",
+                    ImagenUrl = "~/img/noticias/ciberseguridad.jpg",
                     FechaPublicacion = DateTime.Now.AddDays(-1)
                 },
                 new Noticia
@@ -71,7 +71,7 @@ namespace Pagina_Policia_Per.Controllers
                     Titulo = "Nuevos Móviles Refuerzan la Prevención en Zonas Rurales",
                     Resumen = "Se incorporaron 10 camionetas 4x4 equipadas para mejorar el patrullaje.",
                     Contenido = "En un acto presidido por el Jefe de Policía, se hizo entrega oficial de diez nuevas unidades móviles destinadas a las patrullas rurales de la provincia. Estos vehículos, de doble tracción y equipados con comunicación satelital, permitirán un acceso más rápido y seguro a zonas remotas, mejorando significativamente los tiempos de respuesta ante emergencias y reforzando la prevención del abigeato.",
-                    ImagenUrl = "https://via.placeholder.com/800x400/198754/FFFFFF?text=Nuevos+Móviles",
+                    ImagenUrl = "~/img/noticias/Moviles-rurales.jpg",
                     FechaPublicacion = DateTime.Now.AddDays(-5)
                 },
                  new Noticia
@@ -80,7 +80,7 @@ namespace Pagina_Policia_Per.Controllers
                     Titulo = "Alerta por Estafas Telefónicas: No Brinde Datos Personales",
                     Resumen = "La División Delitos Económicos reitera la importancia de no compartir claves bancarias o códigos de verificación por teléfono.",
                     Contenido = "Ante el aumento de denuncias por estafas telefónicas, la Policía de Entre Ríos recuerda a la comunidad que ninguna entidad bancaria o gubernamental solicitará claves, contraseñas o códigos de seguridad por teléfono o WhatsApp. Desconfíe de premios inesperados y no instale aplicaciones a pedido de desconocidos. Ante la duda, corte la comunicación y contacte a la entidad por sus canales oficiales.",
-                    ImagenUrl = "https://via.placeholder.com/800x400/dc3545/FFFFFF?text=Alerta",
+                    ImagenUrl = "~/img/noticias/estafas.jpg",
                     FechaPublicacion = DateTime.Now.AddDays(-3)
                 },
             };
