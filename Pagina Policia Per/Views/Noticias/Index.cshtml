@@ -10,7 +10,7 @@
     <p class="text-center text-muted mb-5">Mantente informado sobre las últimas novedades y operativos de la Policía de Entre Ríos.</p>
 
     <div class="row">
-        @foreach (var noticia in Model)
+        @foreach (var noticia in Model.OrderByDescending(n => n.FechaPublicacion))
         {
             <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch news-card">
                 <div class="card h-100 w-100">
@@ -19,7 +19,7 @@
                         <h5 class="card-title">@noticia.Titulo</h5>
                         <p class="card-text flex-grow-1">@noticia.Resumen</p>
                         <p class="card-text mt-2"><small class="text-muted">Publicado: @noticia.FechaPublicacion.ToShortDateString()</small></p>
-                        <a href="#" class="btn btn-outline-primary mt-auto">Leer más</a>
+                        <a asp-controller="Noticias" asp-action="Detalle" asp-route-id="@noticia.Id" class="btn btn-outline-primary mt-auto">Leer más</a>
                     </div>
                 </div>
             </div>

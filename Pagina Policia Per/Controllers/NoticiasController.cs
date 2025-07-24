@@ -1,26 +1,68 @@
-﻿
+﻿// Archivo: Controllers/NoticiasController.cs
+
 using Microsoft.AspNetCore.Mvc;
-using Pagina_Policia_Per.Models; // Asegúrate de que este 'using' esté presente
+using Pagina_Policia_Per.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Pagina_Policia_Per.Controllers // Este es tu namespace correcto
+namespace Pagina_Policia_Per.Controllers
 {
     public class NoticiasController : Controller
     {
+        // Acción para mostrar la lista completa de noticias
         public IActionResult Index()
         {
-            var listaDeNoticias = new List<Noticia>
-            {
-                new Noticia { Id = 1, Titulo = "Importante Operativo de Seguridad Vial", Resumen = "Controles exhaustivos durante el fin de semana largo para garantizar la seguridad de los viajeros.", ImagenUrl = "https://via.placeholder.com/400x250/0d6efd/FFFFFF?text=Operativo", FechaPublicacion = DateTime.Now.AddDays(-1) },
-                new Noticia { Id = 2, Titulo = "Nuevos Cadetes se Suman a la Fuerza", Resumen = "La escuela de oficiales da la bienvenida a la nueva promoción que comenzará su formación este mes.", ImagenUrl = "https://via.placeholder.com/400x250/198754/FFFFFF?text=Cadetes", FechaPublicacion = DateTime.Now.AddDays(-2) },
-                new Noticia { Id = 3, Titulo = "Recomendaciones para Prevenir Estafas", Resumen = "La división de delitos económicos emite un comunicado con consejos para proteger a la ciudadanía.", ImagenUrl = "https://via.placeholder.com/400x250/dc3545/FFFFFF?text=Prevención", FechaPublicacion = DateTime.Now.AddDays(-3) },
-                new Noticia { Id = 4, Titulo = "Jornada de Prevención en Escuelas", Resumen = "La división de relaciones con la comunidad brindó charlas sobre seguridad digital a estudiantes.", ImagenUrl = "https://via.placeholder.com/400x250/6f42c1/FFFFFF?text=Comunidad", FechaPublicacion = DateTime.Now.AddDays(-4) },
-                new Noticia { Id = 5, Titulo = "Incorporación de Nuevas Tecnologías", Resumen = "Se presentaron los nuevos drones que se suman a la vigilancia aérea en zonas rurales.", ImagenUrl = "https://via.placeholder.com/400x250/ffc107/FFFFFF?text=Tecnología", FechaPublicacion = DateTime.Now.AddDays(-5) }
-            };
+            var listaDeNoticias = _GetNoticias(); // Obtenemos la lista desde nuestro método privado
+            return View(listaDeNoticias.OrderByDescending(n => n.FechaPublicacion).ToList());
+        }
 
-            return View(listaDeNoticias);
+        // --- ¡NUEVA ACCIÓN PARA MOSTRAR EL DETALLE DE UNA NOTICIA! ---
+        // El parámetro 'int id' recibirá el número desde la URL (ej: /Noticias/Detalle/3)
+        public IActionResult Detalle(int id)
+        {
+            var todasLasNoticias = _GetNoticias();
+
+            // Buscamos en la lista la única noticia que coincida con el ID recibido
+            var noticia = todasLasNoticias.FirstOrDefault(n => n.Id == id);
+
+            // Si no se encuentra ninguna noticia con ese ID, devolvemos un error 404 (Not Found)
+            if (noticia == null)
+            {
+                return NotFound();
+            }
+
+            // Si la encontramos, la pasamos a una nueva vista llamada "Detalle.cshtml"
+            return View(noticia);
+        }
+
+
+        // --- Método privado para simular la obtención de datos ---
+        private List<Noticia> _GetNoticias()
+        {
+            return new List<Noticia>
+            {
+                new Noticia
+                {
+                    Id = 1,
+                    Titulo = "Exitosa Capacitación en Ciberdelitos para Personal de Investigaciones",
+                    Resumen = "Más de 50 oficiales completaron el curso avanzado sobre nuevas modalidades de estafas virtuales.", 
+                    // ¡AÑADIMOS EL CONTENIDO COMPLETO!
+                    Contenido = "Durante tres jornadas intensivas, personal de la División Investigaciones recibió formación de vanguardia en la lucha contra el ciberdelito. Los temas incluyeron phishing, ransomware y técnicas de ingeniería social. El curso fue dictado por expertos en seguridad informática y culminó con ejercicios prácticos de análisis forense digital, fortaleciendo las capacidades de nuestra fuerza para enfrentar los desafíos delictivos del siglo XXI.",
+                    ImagenUrl = "https://via.placeholder.com/800x400/0d6efd/FFFFFF?text=Ciberseguridad",
+                    FechaPublicacion = DateTime.Now.AddDays(-1)
+                },
+                new Noticia
+                {
+                    Id = 2,
+                    Titulo = "Nuevos Móviles Refuerzan la Prevención en Zonas Rurales",
+                    Resumen = "Se incorporaron 10 camionetas 4x4 equipadas para mejorar el patrullaje.",
+                    Contenido = "En un acto presidido por el Jefe de Policía, se hizo entrega oficial de diez nuevas unidades móviles destinadas a las patrullas rurales de la provincia. Estos vehículos, de doble tracción y equipados con comunicación satelital, permitirán un acceso más rápido y seguro a zonas remotas, mejorando significativamente los tiempos de respuesta ante emergencias y reforzando la prevención del abigeato.",
+                    ImagenUrl = "https://via.placeholder.com/800x400/198754/FFFFFF?text=Nuevos+Móviles",
+                    FechaPublicacion = DateTime.Now.AddDays(-5)
+                },
+                // ... (y así para el resto de las noticias)
+            };
         }
     }
 }
