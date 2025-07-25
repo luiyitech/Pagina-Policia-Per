@@ -1,6 +1,7 @@
 ﻿// Archivo: Models/NoticiaCreateModel.cs
 
-using System.ComponentModel.DataAnnotations; // Necesario para las anotaciones
+using Microsoft.AspNetCore.Http; // Necesario para IFormFile
+using System.ComponentModel.DataAnnotations;
 
 namespace Pagina_Policia_Per.Models
 {
@@ -17,9 +18,13 @@ namespace Pagina_Policia_Per.Models
         [Required(ErrorMessage = "El contenido es obligatorio.")]
         public string Contenido { get; set; }
 
-        // Más adelante, este campo será para subir un archivo. Por ahora, es un texto para la URL.
-        [Required(ErrorMessage = "La URL de la imagen es obligatoria.")]
-        [Url(ErrorMessage = "Debe ser una URL válida.")]
-        public string ImagenUrl { get; set; }
+        // Comentamos o eliminamos la propiedad antigua que ya no usamos.
+        // public string ImagenUrl { get; set; }
+
+        // ¡AÑADIMOS LA NUEVA PROPIEDAD PARA EL ARCHIVO!
+        // Ahora, cuando la vista busque "ImagenPrincipal", la encontrará.
+        [Required(ErrorMessage = "La imagen principal es obligatoria.")]
+        [Display(Name = "Imagen Principal")] // Esto mejora el texto que se muestra en la etiqueta <label>
+        public IFormFile ImagenPrincipal { get; set; }
     }
 }

@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Pagina_Policia_Per.Models; // ¡Importante! Añadimos el 'using' para el nuevo ViewModel
+﻿using Microsoft.AspNetCore.Hosting; // ¡NUEVO! Necesario para IWebHostEnvironment
+using Microsoft.AspNetCore.Mvc;
+using Pagina_Policia_Per.Models;
 using Pagina_Policia_Per.Services;
+using System.IO; // ¡NUEVO! Necesario para trabajar con rutas de archivos
 using System.Linq;
+using System.Threading.Tasks; // ¡NUEVO! Necesario para los métodos asíncronos
 
 namespace Pagina_Policia_Per.Controllers
 {
@@ -9,14 +12,16 @@ namespace Pagina_Policia_Per.Controllers
     public class NoticiasController : Controller
     {
         private readonly NoticiaService _noticiaService;
+        private readonly IWebHostEnvironment _webHostEnvironment; // ¡NUEVO! Para acceder a wwwroot
 
-        public NoticiasController(NoticiaService noticiaService)
+        // Modificamos el constructor para recibir también IWebHostEnvironment
+        public NoticiasController(NoticiaService noticiaService, IWebHostEnvironment webHostEnvironment)
         {
             _noticiaService = noticiaService;
+            _webHostEnvironment = webHostEnvironment; // ¡NUEVO!
         }
 
-        // --- ACCIÓN PARA MOSTRAR LA LISTA DE NOTICIAS ---
-        // URL: /noticias
+        // --- ACCIONES Index() y Detalle() SE MANTIENEN IGUAL ---
         [Route("")]
         public IActionResult Index()
         {
@@ -24,69 +29,71 @@ namespace Pagina_Policia_Per.Controllers
             return View(listaDeNoticias.OrderByDescending(n => n.FechaPublicacion).ToList());
         }
 
-        // --- ACCIÓN PARA MOSTRAR EL DETALLE DE UNA NOTICIA ---
-        // URL: /noticias/mi-slug-de-noticia
         [Route("{slug}")]
         public IActionResult Detalle(string slug)
         {
             if (string.IsNullOrEmpty(slug)) return BadRequest();
-
             var noticia = _noticiaService.GetAllNoticias().FirstOrDefault(n => n.Slug == slug);
-
             if (noticia == null) return NotFound();
-
             return View(noticia);
         }
 
-        // --- ACCIÓN [GET] PARA MOSTRAR EL FORMULARIO DE CREACIÓN ---
-        // URL: /noticias/crear
+        // --- ACCIÓN Crear() [GET] SE MANTIENE IGUAL ---
         [Route("crear")]
-        [HttpGet] // Este método solo responde a peticiones GET (cuando se visita la URL)
+        [HttpGet]
         public IActionResult Crear()
         {
-            // Simplemente mostramos la vista con el formulario en blanco.
             return View();
         }
 
-        // --- ACCIÓN [POST] PARA PROCESAR LOS DATOS DEL FORMULARIO ---
-        // URL: /noticias/crear (cuando el formulario se envía)
+
+        // --- ¡ACCIÓN Crear() [POST] COMPLETAMENTE ACTUALIZADA! ---
         [Route("crear")]
-        [HttpPost] // Este método solo responde a peticiones POST
-        [ValidateAntiForgeryToken] // Medida de seguridad importante contra ataques CSRF
-        public IActionResult Crear(NoticiaCreateModel modelo)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Crear(NoticiaCreateModel modelo)
         {
-            // 1. Verificamos si el modelo que llegó es válido (cumple las reglas [Required], etc.)
             if (ModelState.IsValid)
             {
-                // --- AQUÍ IRÍA LA LÓGICA PARA GUARDAR EN LA BASE DE DATOS ---
-                // Por ahora, solo simulamos la creación.
+                string nombreArchivoUnico = null;
 
-                // NOTA: Para que la nueva noticia realmente aparezca en la lista,
-                // necesitaríamos modificar el NoticiaService para que pueda añadir
-                // elementos a su lista interna. Por ahora, este paso es conceptual.
+                // 1. Verificamos si el usuario subió un archivo
+                if (modelo.ImagenPrincipal != null)
+                {
+                    // 2. Obtenemos la ruta física a la carpeta wwwroot/img/noticias
+                    string carpetaUploads = Path.Combine(_webHostEnvironment.WebRootPath, "img", "noticias");
 
-                // Creamos un nuevo objeto Noticia con los datos del formulario.
+                    // 3. Creamos un nombre de archivo único para evitar que se sobreescriban
+                    nombreArchivoUnico = Guid.NewGuid().ToString() + "_" + modelo.ImagenPrincipal.FileName;
+                    string rutaArchivo = Path.Combine(carpetaUploads, nombreArchivoUnico);
+
+                    // 4. Guardamos el archivo físicamente en el servidor
+                    //    Usamos 'using' para asegurarnos de que el flujo de archivo se cierre correctamente
+                    using (var fileStream = new FileStream(rutaArchivo, FileMode.Create))
+                    {
+                        await modelo.ImagenPrincipal.CopyToAsync(fileStream);
+                    }
+                }
+
+                // 5. Creamos el nuevo objeto Noticia, usando la ruta a la imagen que acabamos de guardar
                 var nuevaNoticia = new Noticia
                 {
-                    Id = _noticiaService.GetAllNoticias().Count + 1, // Asignamos un nuevo ID (temporal)
+                    Id = _noticiaService.GetAllNoticias().Count + 1,
                     Titulo = modelo.Titulo,
                     Resumen = modelo.Resumen,
                     Contenido = modelo.Contenido,
-                    ImagenUrl = modelo.ImagenUrl,
+                    ImagenUrl = "/img/noticias/" + nombreArchivoUnico, // ¡Usamos la nueva ruta!
                     FechaPublicacion = DateTime.Now
-                    // El Slug se generaría al guardarlo en el servicio/base de datos.
                 };
 
-                // _noticiaService.AddNoticia(nuevaNoticia); // <-- Esto lo implementaríamos en el futuro
+                // En un proyecto real, aquí llamaríamos a un método para guardar la 'nuevaNoticia' en la base de datos
+                // _noticiaService.AddNoticia(nuevaNoticia);
 
-                // 2. Si todo sale bien, redirigimos al usuario a la página de la lista de noticias.
-                //    Usamos TempData para enviar un mensaje de éxito a la siguiente página.
                 TempData["SuccessMessage"] = $"¡La noticia '{nuevaNoticia.Titulo}' se ha creado exitosamente!";
                 return RedirectToAction("Index");
             }
 
-            // 3. Si el modelo no es válido (ej. falta el título), volvemos a mostrar el formulario.
-            //    ASP.NET se encargará de mostrar los mensajes de error junto a cada campo.
+            // Si el modelo no es válido, volvemos a mostrar el formulario
             return View(modelo);
         }
     }

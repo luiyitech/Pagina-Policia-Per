@@ -202,3 +202,12 @@ body {
     .social-icon:hover {
         background-color: var(--primary-color);
     }
+
+/* ================================================== */
+/*          ESTILOS PERSONALIZADOS PARA CKEDITOR      */
+/* ================================================== */
+
+/* Seleccionamos el área de edición de CKEditor por su clase CSS */
+.ck-editor__editable_inline {
+    min-height: 400px; /* ¡AQUÍ ESTÁ LA MAGIA! Define la altura mínima */
+}

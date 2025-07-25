@@ -1,5 +1,4 @@
-﻿<!-- Archivo: Views/Noticias/Crear.cshtml -->
-@model Pagina_Policia_Per.Models.NoticiaCreateModel
+﻿@model Pagina_Policia_Per.Models.NoticiaCreateModel
 
 @{
     ViewData["Title"] = "Crear Nueva Noticia";
@@ -10,15 +9,12 @@
 
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <!-- El formulario apunta a la acción "Crear" y usa el método POST -->
-            <form asp-action="Crear" method="post">
-                <!-- Este div mostrará un resumen de todos los errores -->
+            <form asp-action="Crear" method="post" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
                 <div class="mb-3">
                     <label asp-for="Titulo" class="form-label"></label>
                     <input asp-for="Titulo" class="form-control" />
-                    <!-- Este span mostrará el error específico para el campo Título -->
                     <span asp-validation-for="Titulo" class="text-danger"></span>
                 </div>
 
@@ -30,14 +26,15 @@
 
                 <div class="mb-3">
                     <label asp-for="Contenido" class="form-label"></label>
-                    <textarea asp-for="Contenido" class="form-control" rows="10"></textarea>
+                    <!-- ¡ESTA LÍNEA ES LA CLAVE! Asegúrate de que tenga el id="editorContenido" -->
+                    <textarea id="editorContenido" asp-for="Contenido" class="form-control" rows="10"></textarea>
                     <span asp-validation-for="Contenido" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="ImagenUrl" class="form-label"></label>
-                    <input asp-for="ImagenUrl" class="form-control" />
-                    <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+                    <label asp-for="ImagenPrincipal" class="form-label">Imagen Principal</label>
+                    <input asp-for="ImagenPrincipal" class="form-control" type="file" accept="image/*" />
+                    <span asp-validation-for="ImagenPrincipal" class="text-danger"></span>
                 </div>
 
                 <div class="d-grid gap-2">
@@ -48,3 +45,39 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <!-- 1. Cargamos el script desde el CDN oficial, que es más simple y no requiere licencia -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 2. ¡CORRECCIÓN! Usamos 'ClassicEditor' directamente, como lo requiere la versión del CDN.
+            ClassicEditor
+                .create(document.querySelector('#editorContenido'), {
+
+                    // Con la versión CDN, no se necesita la propiedad 'licenseKey'.
+
+                    // Barra de herramientas ampliada con color e imágenes
+                    toolbar: {
+                        items: [
+                            'heading', '|',
+                            'bold', 'italic', 'underline', '|',
+                            'fontColor', 'fontBackgroundColor', '|',
+                            'link', 'bulletedList', 'numberedList', '|',
+                            'outdent', 'indent', 'alignment', '|',
+                            'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|',
+                            'undo', 'redo'
+                        ]
+                    },
+                    language: 'es'
+                })
+                .then(editor => {
+                    console.log('CKEditor fue inicializado.', editor);
+                })
+                .catch(error => {
+                    console.error('Error al inicializar CKEditor:', error);
+                });
+        });
+    </script>
+}
