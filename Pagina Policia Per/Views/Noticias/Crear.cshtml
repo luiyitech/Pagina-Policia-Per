@@ -1,0 +1,50 @@
+﻿<!-- Archivo: Views/Noticias/Crear.cshtml -->
+@model Pagina_Policia_Per.Models.NoticiaCreateModel
+
+@{
+    ViewData["Title"] = "Crear Nueva Noticia";
+}
+
+<div class="container my-5 pt-5">
+    <h1 class="section-title">Nuevo Post</h1>
+
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <!-- El formulario apunta a la acción "Crear" y usa el método POST -->
+            <form asp-action="Crear" method="post">
+                <!-- Este div mostrará un resumen de todos los errores -->
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="mb-3">
+                    <label asp-for="Titulo" class="form-label"></label>
+                    <input asp-for="Titulo" class="form-control" />
+                    <!-- Este span mostrará el error específico para el campo Título -->
+                    <span asp-validation-for="Titulo" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Resumen" class="form-label"></label>
+                    <textarea asp-for="Resumen" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Resumen" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Contenido" class="form-label"></label>
+                    <textarea asp-for="Contenido" class="form-control" rows="10"></textarea>
+                    <span asp-validation-for="Contenido" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="ImagenUrl" class="form-label"></label>
+                    <input asp-for="ImagenUrl" class="form-control" />
+                    <span asp-validation-for="ImagenUrl" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary">Crear Noticia</button>
+                    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
