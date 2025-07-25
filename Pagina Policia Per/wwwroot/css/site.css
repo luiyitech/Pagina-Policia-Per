@@ -87,12 +87,11 @@ body {
 /* --- ESTILOS DEL HERO VIDEO --- */
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    /* Movemos la sección hero hacia arriba para que quede detrás del menú fijo */
     margin-top: -76px;
 }
 
@@ -123,6 +122,11 @@ body {
     z-index: 3;
     max-width: 800px;
     padding: 20px;
+    text-shadow:
+    /* 1ª Capa: Pequeña y oscura, pegada al texto para definir los bordes */
+    0px 2px 4px rgba(0, 0, 0, 0.95),
+    /* 2ª Capa: Grande y difusa, para el efecto de "resplandor" oscuro */
+    0px 5px 25px rgba(0, 0, 0, 0.8);
 }
 
 
