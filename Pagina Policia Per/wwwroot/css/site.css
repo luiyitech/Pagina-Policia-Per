@@ -1,8 +1,16 @@
-/* ================================================== */
-/*    ESTILOS DEL TEMPLATE POR DEFECTO (Conservados)    */
-/* ================================================== */
+/* ================================================================== */
+/*        CÓDIGO CSS DEFINITIVO BASADO EN TU DISEÑO         */
+/* ================================================================== */
 
-/* Define el tamaño de fuente base para diferentes tamaños de pantalla */
+/* --- 1. Variables y Estilos Base --- */
+:root {
+    --primary-color: #0d6efd; /* Azul primario de Bootstrap que ya usas */
+    --dark-color: #212529;
+    --light-color: #f8f9fa;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* Estilos base del template, fusionados con tus preferencias */
 html {
     font-size: 14px;
 }
@@ -13,43 +21,29 @@ html {
     }
 }
 
-/* Mejora la visibilidad del foco para accesibilidad (muy bueno conservarlo) */
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    /* ¡CLAVE! Esto evita que el contenido principal se esconda debajo del menú fijo */
+    padding-top: 76px; /* Ajusta este valor si la altura de tu menú cambia */
+}
+
+/* Mejora la visibilidad del foco para accesibilidad */
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 
-/* ================================================== */
-/*     CÓDIGO PERSONALIZADO (Versión Final y Corregida) */
-/* ================================================== */
-
-/* Variables de color y tipografía para todo el sitio */
-:root {
-    --primary-color: #0d6efd;
-    --dark-color: #212529;
-    --light-color: #f8f9fa;
-    --font-family: 'Poppins', sans-serif;
-}
-
-/* Regla 'body' fusionada. Contiene nuestra tipografía Y el padding para el menú fijo */
-body {
-    font-family: var(--font-family);
-    line-height: 1.6;
-    /* ¡IMPORTANTE! Esto evita que el contenido principal se esconda debajo del menú fijo */
-    padding-top: 76px; /* Ajusta este valor si la altura del menú cambia */
-}
-
-
-/* --- MENÚ DE NAVEGACIÓN FUTURISTA (Corregido) --- */
+/* --- 2. Menú de Navegación Futurista --- */
 #main-nav {
-    background-color: rgba(10, 25, 47, 0.85);
+    /* Fondo semi-transparente con efecto de desenfoque del contenido que está detrás */
+    background-color: rgba(10, 25, 47, 0.85); /* Un azul oscuro casi negro y translúcido */
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    transition: none;
+    -webkit-backdrop-filter: blur(10px); /* Para compatibilidad con Safari */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Borde sutil */
 }
 
-/* Estilos para cada enlace (botón) del menú */
+/* Estilos para los enlaces del menú */
 .navbar-dark .navbar-nav .nav-link {
     position: relative;
     padding: 10px 15px;
@@ -59,8 +53,7 @@ body {
     transition: color 0.4s ease;
 }
 
-    /* La Animación de Línea Sólida (versión corregida para dropdowns) */
-    /* Usa :not(.dropdown-toggle) para evitar conflictos con el menú desplegable */
+    /* Animación de la línea inferior (excluye el dropdown para que no se vea raro) */
     .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle)::after {
         content: '';
         position: absolute;
@@ -68,12 +61,12 @@ body {
         bottom: 0;
         width: 0;
         height: 2px;
-        background-color: #ffffff; /* Línea sólida blanca, sin neón */
+        background-color: #ffffff;
         border-radius: 2px;
         transition: width 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    /* El Efecto al Pasar el Puntero (Hover) */
+    /* Efecto al pasar el puntero (Hover) */
     .navbar-dark .navbar-nav .nav-link:hover {
         color: #ffffff;
     }
@@ -84,15 +77,15 @@ body {
     }
 
 
-/* --- ESTILOS DEL HERO VIDEO --- */
+/* --- 3. Sección de Video (Hero) --- */
 .hero-section {
     position: relative;
-    height: 80vh;
+    height: 80vh; /* Ocupa el 80% de la altura de la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    margin-top: -76px;
+    margin-top: -76px; /* Compensa el padding-top del body para que empiece justo debajo del menú */
 }
 
 .hero-video {
@@ -103,7 +96,7 @@ body {
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: 1;
+    z-index: 1; /* Nivel 1: El video */
     transform: translateX(-50%) translateY(-50%);
 }
 
@@ -113,24 +106,20 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5); /* Capa oscura para legibilidad */
+    z-index: 2; /* Nivel 2: La capa oscura */
 }
 
 .hero-content {
     position: relative;
-    z-index: 3;
+    z-index: 3; /* Nivel 3: El texto, por encima de todo */
     max-width: 800px;
     padding: 20px;
-    text-shadow:
-    /* 1ª Capa: Pequeña y oscura, pegada al texto para definir los bordes */
-    0px 2px 4px rgba(0, 0, 0, 0.95),
-    /* 2ª Capa: Grande y difusa, para el efecto de "resplandor" oscuro */
-    0px 5px 25px rgba(0, 0, 0, 0.8);
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.95); /* Sombra de texto para máxima legibilidad */
 }
 
 
-/* --- ESTILOS GENERALES Y COMPONENTES --- */
+/* --- 4. Estilos de Componentes Generales --- */
 .section-title {
     text-align: center;
     font-weight: 700;
@@ -138,6 +127,7 @@ body {
     position: relative;
 }
 
+    /* Línea decorativa debajo de los títulos de sección */
     .section-title::after {
         content: '';
         display: block;
@@ -178,7 +168,7 @@ body {
 }
 
 
-/* --- ESTILOS DEL FOOTER --- */
+/* --- 5. Estilos del Footer --- */
 .footer-link {
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
@@ -207,11 +197,83 @@ body {
         background-color: var(--primary-color);
     }
 
-/* ================================================== */
-/*          ESTILOS PERSONALIZADOS PARA CKEDITOR      */
-/* ================================================== */
-
-/* Seleccionamos el área de edición de CKEditor por su clase CSS */
+/* --- 6. Estilos Personalizados para CKEditor --- */
 .ck-editor__editable_inline {
-    min-height: 400px; /* ¡AQUÍ ESTÁ LA MAGIA! Define la altura mínima */
+    min-height: 400px; /* Define la altura mínima del editor de texto */
 }
+
+/* --- ESTILOS PARA LA NUEVA SECCIÓN DE SERVICIOS INTERACTIVOS --- */
+
+.service-tabs-container {
+    min-height: 500px; /* Asegura que la sección tenga una altura mínima */
+}
+
+/* Estilo de los botones de la izquierda */
+.service-tab-button {
+    text-align: left;
+    padding: 20px 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #6c757d; /* Color gris para los botones inactivos */
+    border: none;
+    border-left: 4px solid transparent; /* Borde izquierdo sutil */
+    border-radius: 0 !important; /* Quita el redondeado por defecto de Bootstrap */
+    background-color: transparent !important;
+    transition: all 0.3s ease;
+}
+
+    /* Estilo del botón ACTIVO */
+    .service-tab-button.active {
+        color: var(--primary-color); /* Usa el color azul primario */
+        border-left: 4px solid var(--primary-color);
+        background-color: #ffffff !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    .service-tab-button:hover:not(.active) {
+        color: #343a40; /* Se oscurece un poco al pasar el mouse */
+    }
+
+/* Contenedor del panel derecho (la imagen) */
+.service-content-pane {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    border-radius: 12px;
+    overflow: hidden; /* Esconde lo que se salga de los bordes redondeados */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+/* La capa oscura sobre la imagen para que el texto sea legible */
+.service-pane-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.1) 100%);
+    display: flex;
+    align-items: flex-end; /* Alinea el texto en la parte inferior */
+    padding: 40px;
+    color: #fff;
+}
+
+/* El texto dentro del panel */
+.service-pane-text h3 {
+    font-family: 'Montserrat', sans-serif; /* Asegura la tipografía de títulos */
+}
+
+.service-pane-text p {
+    font-size: 1.1rem;
+    max-width: 80%; /* Evita que el texto ocupe todo el ancho */
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* La animación de fundido (fade) al cambiar de pestaña */
+.tab-pane.fade {
+    transition: opacity 0.5s ease-in-out;
+}
+
