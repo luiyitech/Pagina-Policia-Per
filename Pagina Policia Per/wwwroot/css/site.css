@@ -23,8 +23,12 @@ html {
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    padding-top: 76px;
 }
+
+    /* ¡CLAVE! El padding solo se aplica al body cuando tiene el id="home-page" */
+    body#home-page {
+        padding-top: 76px;
+    }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
@@ -262,4 +266,67 @@ body {
 
 .ck-editor__editable_inline {
     min-height: 400px;
+}
+
+/* --- ESTILOS PARA LA NUEVA PÁGINA INSTITUCIONAL (CORREGIDO) --- */
+.page-header {
+    position: relative;
+    padding: 100px 0;
+    text-align: center;
+    background-image: url('../img/header-institucional.jpg'); /* ¡Asegúrate de tener esta imagen! */
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    /* ¡CLAVE! Este margen empuja la sección hacia abajo para que no quede detrás del menú */
+    margin-top: 76px;
+}
+
+.page-header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 47, 0.7);
+}
+
+.institutional-tabs {
+    border-bottom: 2px solid #dee2e6;
+}
+
+    .institutional-tabs .nav-link {
+        color: #6c757d;
+        font-weight: 600;
+        border: none;
+        border-bottom: 2px solid transparent;
+        padding: 15px 20px;
+        transition: all 0.3s ease;
+    }
+
+        .institutional-tabs .nav-link.active {
+            color: var(--primary-color);
+            background-color: transparent;
+            border-bottom: 2px solid var(--primary-color);
+        }
+
+.institutional-content {
+    background-color: #ffffff;
+    padding: 40px;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.profile-card {
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #dee2e6;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }

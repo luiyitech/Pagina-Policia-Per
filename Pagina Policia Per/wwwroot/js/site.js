@@ -87,3 +87,21 @@
         });
     }
 });
+
+// --- LÓGICA PARA ACTIVAR PESTAÑAS DESDE EL MENÚ ---
+if (window.location.pathname.toLowerCase().includes('institucional')) {
+    const hash = window.location.hash;
+    if (hash) {
+        let tabToActivate = null;
+        if (hash === '#mision') {
+            tabToActivate = document.querySelector('#mision-tab');
+        } else if (hash === '#plana-mayor') {
+            tabToActivate = document.querySelector('#plana-mayor-tab');
+        }
+
+        if (tabToActivate) {
+            const tab = new bootstrap.Tab(tabToActivate);
+            tab.show();
+        }
+    }
+}
