@@ -87,9 +87,19 @@
         <div class="text-center mt-4"><a class="btn btn-primary" asp-controller="Noticias" asp-action="Index">Ver Todas las Noticias</a></div>
     </div>
 
-    <!-- 4. SECCIÓN "CIFRAS" -->
-    <div class="bg-dark text-white">
-        <div class="container py-5 text-center"><h2 class="section-title" style="color:white;">Nuestra Labor en Números</h2><div class="row"><div class="col-md-4"><h3 class="display-4 fw-bold">+1,500</h3><p class="lead">Operativos Mensuales</p></div><div class="col-md-4"><h3 class="display-4 fw-bold">+500</h3><p class="lead">Agentes en Formación</p></div><div class="col-md-4"><h3 class="display-4 fw-bold">24/7</h3><p class="lead">Protección Continua</p></div></div></div>
+    <!-- 4. SECCIÓN "NUESTRA LABOR EN NÚMEROS" (Versión Fondo Animado) -->
+    <div id="plexus-bg" class="stats-section-animated text-white position-relative">
+        <div class="container py-5 text-center position-relative" style="z-index: 2;">
+            <h2 class="section-title" style="color:white;">Nuestra Labor en Números</h2>
+            <div class="row">
+                <!-- Cifra 1: Llamadas al 911 -->
+                <div class="col-md-4 mb-4 mb-md-0"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-phone-volume me-3"></i><span>+1.2M</span></div><p class="lead mt-2">Llamadas al 911 Anuales</p><p class="text-white">Respondiendo a cada emergencia ciudadana.</p></div>
+                <!-- Cifra 2: Lucha contra el Narcotráfico -->
+                <div class="col-md-4 mb-4 mb-md-0"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-box-archive me-3"></i><span>+350kg</span></div><p class="lead mt-2">Narcóticos Incautados</p><p class="text-white">Golpes certeros al narcotráfico en el último año.</p></div>
+                <!-- Cifra 3: Vehículos Recuperados -->
+                <div class="col-md-4"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-car-side me-3"></i><span>+800</span></div><p class="lead mt-2">Vehículos Recuperados</p><p class="text-white">Devolviendo el patrimonio a sus legítimos dueños.</p></div>
+            </div>
+        </div>
     </div>
 
     <!-- 5. SECCIÓN LLAMADA A LA ACCIÓN -->
