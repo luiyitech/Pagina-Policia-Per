@@ -1,58 +1,60 @@
 ﻿// Este código se ejecuta una vez que toda la estructura de la página se ha cargado
 document.addEventListener('DOMContentLoaded', function () {
 
-    // --- SLIDER AUTOMÁTICO PARA LA SECCIÓN DE SERVICIOS DESTACADOS ---
+    // --- SLIDER AUTOMÁTICO PARA LA SECCIÓN DE SERVICIOS DESTACADOS (VERSIÓN CORREGIDA Y FINAL) ---
 
-    // 1. Seleccionamos los elementos con los que vamos a trabajar
+    // 1. Seleccionamos los elementos clave
     const serviceTabsContainer = document.querySelector('.service-tabs-container');
     const tabButtons = document.querySelectorAll('.service-tab-button');
 
-    // 2. Verificación de seguridad: Solo continuamos si los elementos existen en la página
+    // 2. Verificación de seguridad: Solo continuamos si los elementos existen
     if (serviceTabsContainer && tabButtons.length > 0) {
 
-        // 3. Condición "Solo para PC": Verificamos el ancho de la pantalla
-        //    Bootstrap considera 'lg' (large) a partir de 992px.
-        //    La animación solo se activará si la ventana es más ancha que eso.
+        // 3. Condición "Solo para PC": Ancho de ventana mayor o igual a 992px
         if (window.innerWidth >= 992) {
 
-            let currentIndex = 0; // Para saber qué pestaña está activa
+            let currentIndex = 0;
             const SLIDE_INTERVAL = 4000; // 4 segundos
-            let autoSlideTimer; // Variable para guardar nuestro temporizador
+            let autoSlideTimer;
+            let userHasInteracted = false; // ¡LA BANDERA CLAVE! Inicia en 'false'
 
-            // Función que cambia a la siguiente pestaña
+            // Función para detener el slider (la llamará una acción del usuario)
+            const stopAutoSlide = () => {
+                userHasInteracted = true; // El usuario ha tomado el control
+                clearInterval(autoSlideTimer); // Detenemos el temporizador para siempre
+            };
+
+            // Función que se ejecuta cada 4 segundos
             const goToNextTab = () => {
-                // Calcula el índice de la siguiente pestaña.
-                // El operador % (módulo) hace que vuelva a 0 después de la última pestaña, creando un bucle.
+                // ¡IMPORTANTE! Si el usuario ya interactuó, no hacemos nada más.
+                if (userHasInteracted) {
+                    return;
+                }
+
+                // Calcula el índice de la siguiente pestaña en un bucle infinito
                 currentIndex = (currentIndex + 1) % tabButtons.length;
 
-                // Creamos una instancia del componente Tab de Bootstrap para el siguiente botón
+                // Usamos la API de Bootstrap para mostrar la siguiente pestaña
                 const nextTab = new bootstrap.Tab(tabButtons[currentIndex]);
-
-                // Le decimos a Bootstrap que muestre esa pestaña (esto dispara la animación de fundido)
                 nextTab.show();
             };
 
-            // Función para INICIAR el slider automático
+            // Función para iniciar el temporizador
             const startAutoSlide = () => {
-                // Si ya hay un temporizador, lo limpiamos por seguridad
+                // Limpiamos cualquier temporizador anterior por seguridad
                 if (autoSlideTimer) {
                     clearInterval(autoSlideTimer);
                 }
-                // Creamos un nuevo temporizador que llama a goToNextTab cada 4 segundos
+                // Iniciamos el ciclo que llama a goToNextTab cada 4 segundos
                 autoSlideTimer = setInterval(goToNextTab, SLIDE_INTERVAL);
             };
 
-            // Función para DETENER el slider automático
-            const stopAutoSlide = () => {
-                clearInterval(autoSlideTimer);
-            };
+            // 4. Activadores que marcan la interacción del usuario y detienen el slider
 
-            // 4. Activadores para detener la animación:
-
-            // Si el ratón entra en el área del contenedor de pestañas, se detiene.
+            // Si el ratón entra en el área de la sección, se detiene
             serviceTabsContainer.addEventListener('mouseenter', stopAutoSlide);
 
-            // Si el usuario hace clic en CUALQUIER botón de pestaña, se detiene.
+            // Si el usuario hace clic en CUALQUIER botón, se detiene
             tabButtons.forEach(button => {
                 button.addEventListener('click', stopAutoSlide);
             });

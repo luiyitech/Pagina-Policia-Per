@@ -53,30 +53,22 @@
     <!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS -->
     <div class="bg-light">
         <div class="container py-5">
-            <h2 class="section-title">Servicios Destacados</h2>            
+            <h2 class="section-title">Servicios Destacados</h2>
             <div class="row service-tabs-container">
                 <div class="col-lg-4">
-                    <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                        <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button" role="tab"><i class="fas fa-hand-holding-heart me-3"></i><span>Atención a la Violencia de Género</span></button>
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button" role="tab"><i class="fas fa-car-on me-3"></i><span>Verificación del Automotor</span></button>
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button" role="tab"><i class="fas fa-tractor me-3"></i><span>Prevención de Delitos Rurales</span></button>
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button" role="tab"><i class="fas fa-map-location-dot me-3"></i><span>Guía de Dependencias</span></button>
+                    <div class="nav flex-column nav-pills" role="tablist">
+                        <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button"><i class="fas fa-hand-holding-heart me-3"></i><span>Atención a la Violencia de Género</span></button>
+                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button"><i class="fas fa-car-on me-3"></i><span>Verificación del Automotor</span></button>
+                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button"><i class="fas fa-tractor me-3"></i><span>Prevención de Delitos Rurales</span></button>
+                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button"><i class="fas fa-map-location-dot me-3"></i><span>Guía de Dependencias</span></button>
                     </div>
                 </div>
                 <div class="col-lg-8">
                     <div class="tab-content">
-                        <div class="tab-pane fade show active service-content-pane" id="servicio-violencia" role="tabpanel">
-                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Líneas de Ayuda y Contención</h3><p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p><a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a></div></div>
-                        </div>
-                        <div class="tab-pane fade service-content-pane" id="servicio-verificacion" role="tabpanel">
-                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3><p>Consulta los requisitos, la documentación necesaria y solicita tu turno online para la verificación policial.</p><a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a></div></div>
-                        </div>
-                        <div class="tab-pane fade service-content-pane" id="servicio-rurales" role="tabpanel">
-                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Protegiendo el Corazón Productivo</h3><p>Nuestras brigadas especializadas en abigeato y delitos rurales trabajan constantemente para proteger el campo entrerriano.</p><a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a></div></div>
-                        </div>
-                        <div class="tab-pane fade service-content-pane" id="servicio-dependencias" role="tabpanel">
-                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Encuentra tu Comisaría</h3><p>Accede al mapa interactivo y la guía telefónica completa de todas las Jefaturas Departamentales y dependencias.</p><a asp-controller="Dependencias" asp-action="Index" class="btn btn-light btn-lg">Consultar Guía</a></div></div>
-                        </div>
+                        <div class="tab-pane fade show active service-content-pane" id="servicio-violencia"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Líneas de Ayuda y Contención</h3><p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p><a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a></div></div></div>
+                        <div class="tab-pane fade service-content-pane" id="servicio-verificacion"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3><p>Consulta los requisitos y solicita tu turno online para la verificación policial.</p><a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a></div></div></div>
+                        <div class="tab-pane fade service-content-pane" id="servicio-rurales"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Protegiendo el Corazón Productivo</h3><p>Nuestras brigadas especializadas trabajan para proteger el campo entrerriano.</p><a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a></div></div></div>
+                        <div class="tab-pane fade service-content-pane" id="servicio-dependencias"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Encuentra tu Comisaría</h3><p>Accede al mapa interactivo y la guía telefónica completa de todas las dependencias.</p><a asp-controller="Dependencias" asp-action="Index" class="btn btn-light btn-lg">Consultar Guía</a></div></div></div>
                     </div>
                 </div>
             </div>

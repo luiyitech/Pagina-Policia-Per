@@ -1,5 +1,5 @@
 /* ================================================================== */
-/*        CÓDIGO CSS DEFINITIVO BASADO EN TU DISEÑO         */
+/*        CÓDIGO CSS DEFINITIVO Y COMPLETO PARA TU PROYECTO         */
 /* ================================================================== */
 
 /* --- 1. Variables y Estilos Base --- */
@@ -23,13 +23,12 @@ html {
 body {
     font-family: var(--font-family);
     line-height: 1.6;
-    padding-top: 76px; /* Compensa la altura de la barra de navegación fija */
+    padding-top: 76px;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
-
 
 /* --- 2. Menú de Navegación Futurista --- */
 #main-nav {
@@ -67,7 +66,6 @@ body {
     .navbar-dark .navbar-nav .nav-link:not(.dropdown-toggle):hover::after {
         width: 100%;
     }
-
 
 /* --- 3. Sección de Video (Hero) --- */
 .hero-section {
@@ -110,7 +108,6 @@ body {
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.95);
 }
 
-
 /* --- 4. Estilos de Componentes Generales --- */
 .section-title {
     text-align: center;
@@ -141,23 +138,12 @@ body {
         box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     }
 
-.icon-card .card-body {
-    text-align: center;
-}
-
-.icon-card i {
-    font-size: 3rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-}
-
 .news-card .card-img-top {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     object-fit: cover;
     height: 200px;
 }
-
 
 /* --- 5. Estilos para la Nueva Sección de Servicios Interactivos --- */
 .service-tabs-container {
@@ -215,17 +201,15 @@ body {
     margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.9);
 }
-
+/* Transición de fundido RÁPIDA para las imágenes */
 .tab-pane.fade {
-    transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.3s ease-in-out;
 }
 
-
-/* --- 6. Estilos del Footer --- */
-.footer-link {
-    color: rgba(255, 255, 255, 0.7);
+/* --- 6. Estilos del Footer y otros --- */
+.footer-link, .social-icon {
     text-decoration: none;
-    transition: color 0.3s;
+    transition: all 0.3s;
 }
 
     .footer-link:hover {
@@ -242,16 +226,12 @@ body {
     background-color: rgba(255, 255, 255, 0.1);
     color: #fff;
     margin-right: 10px;
-    text-decoration: none;
-    transition: background-color 0.3s;
 }
 
     .social-icon:hover {
         background-color: var(--primary-color);
     }
 
-
-/* --- 7. Estilos para CKEditor --- */
 .ck-editor__editable_inline {
     min-height: 400px;
 }
