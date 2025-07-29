@@ -3,6 +3,38 @@
     ViewData["Title"] = "Bienvenido";
 }
 
+@section Scripts {
+    <style>
+        /* Define las imágenes de fondo para cada panel, usando la sintaxis correcta de ASP.NET */
+        #servicio-violencia {
+            background-image: url('@Url.Content("~/img/servicios/emergencias_llamadas.jpg")');
+        }
+
+        #servicio-verificacion {
+            background-image: url('@Url.Content("~/img/servicios/automotor.jpg")');
+        }
+
+        #servicio-rurales {
+            background-image: url('@Url.Content("~/img/servicios/delitos-rurales-entre-rios.jpg")');
+        }
+
+        #servicio-dependencias {
+            background-image: url('@Url.Content("~/img/servicios/mapa.jpg")');
+        }
+
+        /* Corrige el color del texto e icono del botón activo */
+        .service-tab-button.active {
+            color: var(--dark-color) !important;
+            background-color: #ffffff !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+            .service-tab-button.active i {
+                color: var(--primary-color) !important;
+            }
+    </style>
+}
+
 <!-- 1. HERO VIDEO DE INICIO -->
 <div id="inicio" class="hero-section">
     <video playsinline autoplay muted loop poster="~/img/poster-placeholder.jpg" class="hero-video">
@@ -18,79 +50,32 @@
 </div>
 
 <main>
-    <!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS (Versión Visual y Moderna) -->
+    <!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS -->
     <div class="bg-light">
         <div class="container py-5">
-            <h2 class="section-title">Servicios Destacados</h2>
+            <h2 class="section-title">Servicios Destacados</h2>            
             <div class="row service-tabs-container">
-                <!-- Columna Izquierda: Los Botones de Navegación -->
                 <div class="col-lg-4">
                     <div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">
-                        <!-- Botón 1 -->
-                        <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button" role="tab">
-                            <i class="fas fa-hand-holding-heart me-3"></i>
-                            <span>Atención a la Violencia de Género</span>
-                        </button>
-                        <!-- Botón 2 -->
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button" role="tab">
-                            <i class="fas fa-car-on me-3"></i>
-                            <span>Verificación del Automotor</span>
-                        </button>
-                        <!-- Botón 3 -->
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button" role="tab">
-                            <i class="fas fa-tractor me-3"></i>
-                            <span>Prevención de Delitos Rurales</span>
-                        </button>
-                        <!-- Botón 4 -->
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button" role="tab">
-                            <i class="fas fa-map-location-dot me-3"></i>
-                            <span>Guía de Dependencias</span>
-                        </button>
+                        <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button" role="tab"><i class="fas fa-hand-holding-heart me-3"></i><span>Atención a la Violencia de Género</span></button>
+                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button" role="tab"><i class="fas fa-car-on me-3"></i><span>Verificación del Automotor</span></button>
+                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button" role="tab"><i class="fas fa-tractor me-3"></i><span>Prevención de Delitos Rurales</span></button>
+                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button" role="tab"><i class="fas fa-map-location-dot me-3"></i><span>Guía de Dependencias</span></button>
                     </div>
                 </div>
-
-                <!-- Columna Derecha: El Contenido con la Imagen -->
                 <div class="col-lg-8">
                     <div class="tab-content">
-                        <!-- Panel de Contenido 1 (Activo por defecto) -->
-                        <div class="tab-pane fade show active service-content-pane" id="servicio-violencia" role="tabpanel" style="background-image: url('/img/servicios/violencia-genero.jpg');">
-                            <div class="service-pane-overlay">
-                                <div class="service-pane-text">
-                                    <h3 class="fw-bold">Líneas de Ayuda y Contención</h3>
-                                    <p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p>
-                                    <a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade show active service-content-pane" id="servicio-violencia" role="tabpanel">
+                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Líneas de Ayuda y Contención</h3><p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p><a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a></div></div>
                         </div>
-                        <!-- Panel de Contenido 2 -->
-                        <div class="tab-pane fade service-content-pane" id="servicio-verificacion" role="tabpanel" style="background-image: url('/img/servicios/verificacion-auto.jpg');">
-                            <div class="service-pane-overlay">
-                                <div class="service-pane-text">
-                                    <h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3>
-                                    <p>Consulta los requisitos, la documentación necesaria y solicita tu turno online para la verificación policial.</p>
-                                    <a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade service-content-pane" id="servicio-verificacion" role="tabpanel">
+                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3><p>Consulta los requisitos, la documentación necesaria y solicita tu turno online para la verificación policial.</p><a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a></div></div>
                         </div>
-                        <!-- Panel de Contenido 3 -->
-                        <div class="tab-pane fade service-content-pane" id="servicio-rurales" role="tabpanel" style="background-image: url('/img/servicios/delito-rural.jpg');">
-                            <div class="service-pane-overlay">
-                                <div class="service-pane-text">
-                                    <h3 class="fw-bold">Protegiendo el Corazón Productivo</h3>
-                                    <p>Nuestras brigadas especializadas en abigeato y delitos rurales trabajan constantemente para proteger el campo entrerriano.</p>
-                                    <a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade service-content-pane" id="servicio-rurales" role="tabpanel">
+                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Protegiendo el Corazón Productivo</h3><p>Nuestras brigadas especializadas en abigeato y delitos rurales trabajan constantemente para proteger el campo entrerriano.</p><a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a></div></div>
                         </div>
-                        <!-- Panel de Contenido 4 -->
-                        <div class="tab-pane fade service-content-pane" id="servicio-dependencias" role="tabpanel" style="background-image: url('/img/servicios/mapa-dependencias.jpg');">
-                            <div class="service-pane-overlay">
-                                <div class="service-pane-text">
-                                    <h3 class="fw-bold">Encuentra tu Comisaría</h3>
-                                    <p>Accede al mapa interactivo y la guía telefónica completa de todas las Jefaturas Departamentales y dependencias.</p>
-                                    <a asp-controller="Dependencias" asp-action="Index" class="btn btn-light btn-lg">Consultar Guía</a>
-                                </div>
-                            </div>
+                        <div class="tab-pane fade service-content-pane" id="servicio-dependencias" role="tabpanel">
+                            <div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Encuentra tu Comisaría</h3><p>Accede al mapa interactivo y la guía telefónica completa de todas las Jefaturas Departamentales y dependencias.</p><a asp-controller="Dependencias" asp-action="Index" class="btn btn-light btn-lg">Consultar Guía</a></div></div>
                         </div>
                     </div>
                 </div>

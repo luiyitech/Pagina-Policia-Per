@@ -17,7 +17,6 @@
 </head>
 <body>
     <header>
-        <!-- El ID 'main-nav' es lo que nuestro CSS usa para aplicar el estilo futurista -->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="main-nav">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
@@ -48,7 +47,7 @@
         </nav>
     </header>
 
-    <!-- El contenido de Index.cshtml (y otras páginas) se inyectará aquí -->
+    <!-- El contenido de las páginas se inyecta aquí -->
     @RenderBody()
 
     <footer id="contacto" class="bg-dark text-white pt-5 pb-4">
@@ -58,7 +57,6 @@
                     <h5 class="text-uppercase fw-bold"><i class="fas fa-shield-halved me-2"></i>Policía de Entre Ríos</h5>
                     <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #ffffff; height: 2px" />
                     <p>Jefatura Central: [Dirección de la Jefatura], Paraná, Entre Ríos.</p>
-                    <p>Teléfono: (0343) 123-4567</p>
                 </div>
                 <div class="col-md-4 col-lg-2 col-xl-2 mx-auto mb-4">
                     <h5 class="text-uppercase fw-bold">Links Útiles</h5>
