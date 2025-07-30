@@ -368,7 +368,7 @@ body {
 /* Estilos para la sección de Caídos en el Deber */
 .caidos-honor-img {
     max-width: 200px;
-    opacity: 0.6;
+    opacity: 0.9;
 }
 
 /* Estilos para la lista conmemorativa de Caídos en Deber */
@@ -491,7 +491,7 @@ body {
     background-color: #ffffff;
     background-image: url("https://www.transparenttextures.com/patterns/concrete-wall.png");
     /* Color de texto principal para todo el contenido */
-    color: #4b2e1d;
+    color: rgba(0, 0, 0, 0.7);
     padding: 40px;
     border: 2px solid #c2b280; /* Borde de color pergamino */
     border-top: none; /* Mantenemos el borde superior unido a las pestañas */
@@ -507,7 +507,7 @@ body {
     .institutional-content h3 {
         font-family: 'Poppins', sans-serif; /* Usamos la fuente moderna para los títulos */
         font-weight: 700;
-        color: #382115;
+        color: #000000df;
     }
 
 /* Estilo para la imagen de cabecera de la sección Historia */
