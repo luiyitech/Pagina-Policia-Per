@@ -309,6 +309,11 @@ body {
             border-bottom: 2px solid var(--primary-color);
         }
 
+        /* ¡AÑADE ESTA NUEVA REGLA AQUÍ! */
+        .institutional-tabs .nav-link:hover:not(.active) {
+            color: var(--primary-color);
+        }
+
 .institutional-content {
     background-color: #ffffff;
     padding: 40px;
@@ -329,4 +334,72 @@ body {
     border-radius: 50%;
     border: 4px solid #dee2e6;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- ESTILOS ADICIONALES PARA PÁGINA INSTITUCIONAL --- */
+
+/* Contenedor del texto para justificarlo */
+.texto-historia p {
+    text-align: justify;
+    margin-bottom: 1rem; /* Añade un espacio entre párrafos */
+}
+
+/* Estilo para la imagen de cabecera de la sección Historia */
+.historia-img {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    max-height: 350px; /* Limita su altura para que no sea excesiva */
+    object-fit: cover; /* Se asegura de que la imagen cubra el área sin deformarse */
+    border-radius: 10px; /* Mantiene los bordes redondeados */
+    margin-bottom: 1.5rem; /* Crea un espacio debajo de la imagen */
+}
+
+/* Tarjetas para la sección de Direcciones */
+.direccion-card {
+    padding: 20px;
+    border-left: 4px solid var(--primary-color);
+    background-color: #f8f9fa;
+    height: 100%;
+}
+
+    .direccion-card h5 {
+        font-family: 'Montserrat', sans-serif;
+    }
+
+/* Estilos para la sección de Caídos en el Deber */
+.caidos-honor-img {
+    max-width: 120px;
+    opacity: 0.6;
+}
+
+.caidos-honor-roll {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+}
+
+/* Estilos para la Galería de Imágenes */
+.gallery-thumbnail {
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+    .gallery-thumbnail:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+.modal-content {
+    background-color: transparent;
+    border: none;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.btn-close {
+    background-color: white;
+    border-radius: 50%;
 }

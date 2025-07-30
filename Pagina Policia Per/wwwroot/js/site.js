@@ -7,7 +7,7 @@
     if (serviceTabsContainer && tabButtons.length > 0) {
         if (window.innerWidth >= 992) { // Solo para pantallas de escritorio
             let currentIndex = 0;
-            const SLIDE_INTERVAL = 4000; // 4 segundos
+            const SLIDE_INTERVAL = 3500; // 3 segundos
             let autoSlideTimer; // Temporizador para el ciclo automático
             let restartTimer;   // ¡NUEVO! Temporizador para reiniciar la animación
 
@@ -50,7 +50,7 @@
                     });
                     // Iniciamos el ciclo de nuevo
                     startAutoSlide();
-                }, 5000); // 5000 milisegundos = 5 segundos
+                }, 3000); // 3000 milisegundos = 5 segundos
             };
 
             // Función que se activa cuando el ratón ENTRA en el área
@@ -105,3 +105,31 @@ if (window.location.pathname.toLowerCase().includes('institucional')) {
         }
     }
 }
+
+// --- LÓGICA PARA LA GALERÍA DE IMÁGENES DE LA PÁGINA INSTITUCIONAL ---
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Verificamos si existe el modal de la galería en la página actual
+    const galleryModal = document.getElementById('galleryModal');
+
+    if (galleryModal) {
+        // Buscamos todos los enlaces de la galería
+        const galleryLinks = document.querySelectorAll('.gallery-link');
+        const modalImage = document.getElementById('modalImage');
+
+        // Para cada enlace...
+        galleryLinks.forEach(link => {
+            // ...añadimos un detector de clics
+            link.addEventListener('click', function (event) {
+                // Prevenimos que el enlace intente navegar a otra página
+                event.preventDefault();
+
+                // Obtenemos la ruta de la imagen grande desde el atributo 'href' del enlace
+                const imageUrl = this.getAttribute('href');
+
+                // Asignamos esa ruta a la imagen que está dentro del modal
+                modalImage.setAttribute('src', imageUrl);
+            });
+        });
+    }
+});

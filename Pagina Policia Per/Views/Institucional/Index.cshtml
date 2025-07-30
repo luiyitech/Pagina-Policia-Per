@@ -2,7 +2,7 @@
     ViewData["Title"] = "Institucional";
 }
 
-<!-- 1. CABECERA DE LA PÁGINA (CON IMAGEN DE FONDO) -->
+<!-- 1. CABECERA DE LA PÁGINA -->
 <div class="page-header">
     <div class="page-header-overlay"></div>
     <div class="container position-relative">
@@ -11,33 +11,136 @@
     </div>
 </div>
 
-<!-- 2. CONTENEDOR PRINCIPAL CON PESTAÑAS -->
+<!-- 2. CONTENEDOR PRINCIPAL CON PESTAÑAS AMPLIADO -->
 <div class="container my-5">
     <div class="row">
         <div class="col-12">
             <!-- Pestañas de Navegación -->
-            <ul class="nav nav-tabs institutional-tabs" id="institutionalTab" role="tablist">
-                <li class="nav-item" role="presentation"><button class="nav-link active" id="mision-tab" data-bs-toggle="tab" data-bs-target="#mision-pane" type="button">Misión y Visión</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="plana-mayor-tab" data-bs-toggle="tab" data-bs-target="#plana-mayor-pane" type="button">Plana Mayor</button></li>
-                <li class="nav-item" role="presentation"><button class="nav-link" id="historia-tab" data-bs-toggle="tab" data-bs-target="#historia-pane" type="button">Nuestra Historia</button></li>
+            <ul class="nav nav-tabs institutional-tabs justify-content-center" id="institutionalTab" role="tablist">
+                <li class="nav-item" role="presentation"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#mision-pane" type="button">Misión y Visión</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#historia-pane" type="button">Nuestra Historia</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#plana-mayor-pane" type="button">Plana Mayor</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#direcciones-pane" type="button">Direcciones</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#ex-jefes-pane" type="button">Ex Jefes</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#caidos-pane" type="button">Caídos en Deber</button></li>
+                <li class="nav-item" role="presentation"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#galeria-pane" type="button">Galería</button></li>
             </ul>
 
             <!-- Contenido de las Pestañas -->
             <div class="tab-content institutional-content">
+
+                <!-- Pestaña: Misión y Visión -->
                 <div class="tab-pane fade show active" id="mision-pane" role="tabpanel">
-                    <h3>Nuestra Misión</h3><p>Mantener el orden público, proteger la vida y los bienes de los habitantes de la provincia de Entre Ríos, y prevenir el delito a través de la presencia activa y el compromiso con la comunidad, actuando siempre en el marco de la ley y el respeto a los derechos humanos.</p><hr class="my-4"><h3>Nuestra Visión</h3><p>Ser una fuerza policial de vanguardia, reconocida por su profesionalismo, transparencia y cercanía con el ciudadano. Aspiramos a la constante modernización de nuestros recursos y a la capacitación continua de nuestro personal para responder con eficacia a los desafíos de seguridad del siglo XXI.</p>
+                    <h3>Nuestra Misión</h3><p>Mantener el orden público, proteger la vida y los bienes de los habitantes de la provincia de Entre Ríos, y prevenir el delito a través de la presencia activa y el compromiso con la comunidad...</p><hr class="my-4"><h3>Nuestra Visión</h3><p>Ser una fuerza policial de vanguardia, reconocida por su profesionalismo, transparencia y cercanía con el ciudadano...</p>
                 </div>
-                <div class="tab-pane fade" id="plana-mayor-pane" role="tabpanel">
-                    <h3>Conducción Superior</h3>
-                    <div class="row mt-4">
-                        <div class="col-md-4 text-center profile-card"><img src="~/img/plana-mayor/jefe.jpg" class="profile-img" alt="Jefe"><h5 class="mt-3">[Nombre Jefe]</h5><p class="text-muted">Jefe de Policía</p></div>
-                        <div class="col-md-4 text-center profile-card"><img src="~/img/plana-mayor/subjefe.jpg" class="profile-img" alt="Subjefe"><h5 class="mt-3">[Nombre Subjefe]</h5><p class="text-muted">Subjefe de Policía</p></div>
+
+                <!-- Pestaña: Historia (Versión Corregida y Profesional) -->
+                <div class="tab-pane fade" id="historia-pane" role="tabpanel">
+                    <img src="~/img/institucional/historia.jpg" class="img-fluid rounded float-end ms-4 mb-3 historia-img" alt="Foto histórica de la Jefatura">
+                    <h3 class="mt-4">Un Legado de Servicio</h3>
+
+                    <div class="texto-historia">
+                        <p>
+                            <strong>Síntesis Histórica de la creación de la Policía provincia de Entre Ríos.</strong>
+                        </p>
+                        <p>
+                            La autoridad que ejercía las funciones policiales y aplicaba procedimientos y penalidades durante el período comprendido desde 1.810 hasta la República de Entre Ríos del General <strong>Francisco Ramírez</strong>, era y estaba a cargo de los Alcaldes, y Comandantes de cada partido que lo siguieron haciendo como en la época del Virreinato del Río de la Plata.
+                        </p>
+                        <p>
+                            Es así que la seguridad, el orden y todo lo relacionado a la actividad policial tenía un régimen militar; también agrega el historiador Dr. César Blas Pérez Colman que: “… la familia, el estatuto personal, el derecho sucesorio, el régimen de la propiedad, las reglas comerciales, la moneda circulante, la legislación contractual, las leyes civiles, comerciales y penales continuaron en vigencia, al igual que existieron las ordenanzas militares y las contribuciones según lo establecido por las autoridades españolas, quienes designaban funcionarios que cumplían deberes dentro de los conceptos policiales, como ser: Alcaldes de Hermandad, Alcaldes Mayores Ordinarios, Alcaldes de Cuartel y Regidores de Policía”.
+                        </p>
+                        <p>
+                            Al crearse la República de Entre Ríos (que comprendía los territorios de Entre Ríos, Corrientes y Misiones) por el bando del 29 de septiembre de 1820, bajo el mando del General Francisco Ramírez, con el título de Supremo Entrerriano, los comandantes militares efectuaban el reclutamiento del personal instruyéndolos y capacitándolos para el desempeño como combatientes.
+                        </p>
+                        <p>
+                            En el gobierno del General Dr. <strong>Pascual Echagüe</strong>, mediante norma de fecha 06 de Marzo de 1834, el Congreso dicta la Ley creando los cargos de Juez de Policía de la capital Paraná, y de la ciudad del Uruguay. Fue designado primer Jefe de Policía de la capital provincial en fecha 12 de Agosto de 1834, el Sargento Mayor D. <strong>PEDRO MARURY</strong>.
+                        </p>
+                        <p>
+                            El 27 de Julio de 1.835, con cuarenta y dos artículos se sanciona y entra en vigor el <strong>Reglamento de Policía</strong>, que constituye un amplio ordenamiento para la vida urbana y de preservación del orden público.
+                        </p>
+                        <p>
+                            El General <strong>Justo José de Urquiza</strong>, en sus diferentes períodos de gobierno desde 1841, presta preferente atención a la organización policial a la que impone una disciplina estricta y rígida. En 1860 dispone la organización de la Policía en todo el territorio de la Provincia.
+                        </p>
+                        <p>
+                            El Gobernador Dr. <strong>Salvador Maciá</strong> durante su gestión 1895 - 1899 redactó un nuevo reglamento para la Policía, que se implementará desde 1904. En reconocimiento a su obra destacada por el bien de la seguridad, es que la Escuela de Oficiales en la actualidad lleva su nombre.
+                        </p>
+                        <p>
+                            Luego y en su afán de actualizarse para brindar un mejor servicio se sanciona en 1975 un nuevo Reglamento General de Policía, como <strong>Ley N° 5654</strong> y que rige hasta nuestros días con nuevas modificaciones que los tiempos exigen.
+                        </p>
+                        <p>
+                            Esta es una breve síntesis de la creación de la Policía de Entre Ríos, que nacida de la guerra y construida en las milicias custodia fielmente el orden de los entrerrianos, presentando sus caracteres propios, herencia sagrada y orgullo para las nuevas generaciones.-
+                        </p>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="historia-pane" role="tabpanel">
-                    <h3>Un Legado de Servicio</h3>
-                    <p>La Policía de Entre Ríos fue creada el [Fecha de Creación], con el objetivo de establecer un cuerpo organizado para la protección de sus habitantes. A lo largo de más de un siglo, la institución ha evolucionado, adaptándose a los cambios sociales y tecnológicos, pero manteniendo siempre firme su vocación de servicio y su compromiso con la seguridad de la provincia.</p>
+
+                <!-- Pestaña: Plana Mayor -->
+                <div class="tab-pane fade" id="plana-mayor-pane" role="tabpanel">
+                    <h3>Conducción Superior</h3>
+                    <div class="row mt-4"><div class="col-md-4 text-center profile-card"><img src="~/img/plana-mayor/jefe.jpg" class="profile-img" alt="Jefe"><h5 class="mt-3">[Nombre Jefe]</h5><p class="text-muted">Jefe de Policía</p></div><div class="col-md-4 text-center profile-card"><img src="~/img/plana-mayor/subjefe.jpg" class="profile-img" alt="Subjefe"><h5 class="mt-3">[Nombre Subjefe]</h5><p class="text-muted">Subjefe de Policía</p></div></div>
                 </div>
+
+                <!-- Pestaña: Direcciones -->
+                <div class="tab-pane fade" id="direcciones-pane" role="tabpanel">
+                    <h3>Conformación Institucional</h3>
+                    <p>La estructura de la Policía de Entre Ríos se organiza en diversas direcciones, cada una con una función específica para garantizar la seguridad integral de la provincia.</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6 mb-3"><div class="card direccion-card"><h5>Dirección Toxicología</h5><p>Lucha contra el narcotráfico y delitos conexos.</p></div></div>
+                        <div class="col-md-6 mb-3"><div class="card direccion-card"><h5>Dirección Operaciones y Seguridad</h5><p>Planificación y ejecución de operativos de prevención.</p></div></div>
+                        <div class="col-md-6 mb-3"><div class="card direccion-card"><h5>Dirección Delitos Rurales</h5><p>Prevención e investigación de abigeato y otros delitos en el campo.</p></div></div>
+                        <div class="col-md-6 mb-3"><div class="card direccion-card"><h5>Dirección Criminalística</h5><p>Peritajes y análisis científico de la escena del crimen.</p></div></div>
+                    </div>
+                </div>
+
+                <!-- Pestaña: Ex Jefes -->
+                <div class="tab-pane fade" id="ex-jefes-pane" role="tabpanel">
+                    <h3>Galería de Ex Jefes</h3>
+                    <table class="table table-striped mt-4">
+                        <thead><tr><th>Nombre</th><th>Período</th></tr></thead>
+                        <tbody>
+                            <tr><td>Comisario General [Nombre]</td><td>[Año Inicio] - [Año Fin]</td></tr>
+                            <tr><td>Comisario General [Nombre]</td><td>[Año Inicio] - [Año Fin]</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Pestaña: Caídos en el Deber -->
+                <div class="tab-pane fade" id="caidos-pane" role="tabpanel">
+                    <div class="text-center">
+                        <img src="~/img/institucional/honor.png" alt="Honor y Respeto" class="caidos-honor-img">
+                        <h3 class="mt-4">En Honor a Nuestros Héroes</h3>
+                        <p class="lead">Recordamos y honramos a aquellos valientes hombres y mujeres que dieron su vida en el cumplimiento del deber, protegiendo a nuestra comunidad.</p>
+                        <hr>
+                        <ul class="list-unstyled caidos-honor-roll">
+                            <li>Oficial [Nombre Completo]</li>
+                            <li>Sargento [Nombre Completo]</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Pestaña: Galería -->
+                <div class="tab-pane fade" id="galeria-pane" role="tabpanel">
+                    <h3>Galería Institucional</h3>
+                    <div class="row mt-4">
+                        <div class="col-lg-3 col-md-4 col-6 mb-4"><a href="~/img/galeria/foto1_full.jpg" class="gallery-link" data-bs-toggle="modal" data-bs-target="#galleryModal"><img src="~/img/galeria/foto1_thumb.jpg" class="img-fluid gallery-thumbnail" alt="Imagen 1"></a></div>
+                        <div class="col-lg-3 col-md-4 col-6 mb-4"><a href="~/img/galeria/foto2_full.jpg" class="gallery-link" data-bs-toggle="modal" data-bs-target="#galleryModal"><img src="~/img/galeria/foto2_thumb.jpg" class="img-fluid gallery-thumbnail" alt="Imagen 2"></a></div>
+                        <!-- Repite este bloque para cada imagen -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para la Galería de Imágenes -->
+<div class="modal fade" id="galleryModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="" class="img-fluid" id="modalImage" alt="Imagen Ampliada">
             </div>
         </div>
     </div>
