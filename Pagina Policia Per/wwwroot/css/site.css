@@ -539,4 +539,55 @@ body {
     border: 4px solid #c2b280;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
-/* ... (el resto de los estilos que ya tenías para Direcciones, Caídos, Galería, etc.) ... */
+
+/* =================================================================== */
+/*        ESTILOS MEJORADOS PARA LA GALERÍA INSTITUCIONAL          */
+/* =================================================================== */
+
+/* 1. Contenedor con scroll propio */
+#galeria-scroll-wrapper {
+    max-height: 800px; /* Altura máxima del contenedor de la galería */
+    overflow-y: auto; /* Muestra la barra de scroll vertical SÓLO si es necesario */
+    padding: 15px; /* Un poco de espacio interno */
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+/* 2. Estilos para los items de la galería */
+.gallery-item a {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px; /* Bordes redondeados para el contenedor del enlace */
+}
+
+/* 3. La magia para imágenes uniformes */
+.gallery-item .img-thumbnail {
+    width: 100%; /* La imagen ocupa todo el ancho del contenedor */
+    height: 250px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* ESTA ES LA CLAVE: Recorta la imagen para llenar el espacio sin distorsionarla */
+    transition: transform 0.35s ease-in-out;
+}
+
+/* 4. Efecto hover mejorado */
+.gallery-item a:hover .img-thumbnail {
+    transform: scale(1.1); /* Hacemos el zoom un poco más notorio */
+    cursor: pointer;
+}
+
+/* 5. Velo sutil que aparece en el hover */
+.gallery-item a::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.5), transparent); /* Gradiente oscuro desde abajo */
+    opacity: 0;
+    transition: opacity 0.35s ease-in-out;
+}
+
+.gallery-item a:hover::after {
+    opacity: 1;
+}

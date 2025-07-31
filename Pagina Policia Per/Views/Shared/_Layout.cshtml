@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Policía de Entre Ríos</title>
 
-    <!-- Enlaces a CDNs (Bootstrap, Font Awesome, Google Fonts) -->
+    <!-- FUENTES Y ESTILOS PRINCIPALES -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Enlace a tu hoja de estilos personalizada -->
+    <!-- ESTILOS DE LA GALERÍA LIGHTBOX -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY99L4UtJKdiwqSoPlZTsmawsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- TU HOJA DE ESTILOS PERSONALIZADA (VA AL FINAL) -->
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
@@ -30,14 +33,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Noticias" asp-action="Index">Noticias</a></li>
-
-                        <!-- ======================================================= -->
-                        <!--       ESTE ES EL ENLACE "INSTITUCIONAL" CORREGIDO       -->
-                        <!-- ======================================================= -->
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Institucional" asp-action="Index">Institucional</a>
-                        </li>
-
+                        <li class="nav-item"><a class="nav-link" asp-controller="Institucional" asp-action="Index">Institucional</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
@@ -45,7 +41,6 @@
         </nav>
     </header>
 
-    <!-- El contenido de las páginas (Index.cshtml, Institucional/Index.cshtml, etc.) se inyecta aquí -->
     @RenderBody()
 
     <footer id="contacto" class="bg-dark text-white pt-5 pb-4">
@@ -78,9 +73,16 @@
         </div>
     </footer>
 
-    <!-- Scripts de JavaScript necesarios -->
+    <!-- SECCIÓN DE SCRIPTS ORDENADA -->
+    <!-- 1. JQUERY (Requerido por Lightbox2) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- 2. BOOTSTRAP BUNDLE (JS de Bootstrap) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 3. LIGHTBOX2 (Script de la galería, depende de jQuery) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js" integrity="sha512-Ixzuzfxv1EqafeQlTCufWfaC6ful6WFqIz4G+dWvK0beHw0NVJwvCKSgafpy5gwNqKmgUfIBraSLeeciqp9Rdg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- 4. PARTICLES.JS (Tu librería de partículas) -->
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <!-- 5. TU SCRIPT PERSONALIZADO (ÚNICO Y AL FINAL) -->
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

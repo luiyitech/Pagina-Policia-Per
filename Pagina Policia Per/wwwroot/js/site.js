@@ -107,29 +107,89 @@ if (window.location.pathname.toLowerCase().includes('institucional')) {
 }
 
 // --- LÓGICA PARA LA GALERÍA DE IMÁGENES DE LA PÁGINA INSTITUCIONAL ---
-document.addEventListener('DOMContentLoaded', function () {
+$(document).ready(function () {
 
-    // Verificamos si existe el modal de la galería en la página actual
-    const galleryModal = document.getElementById('galleryModal');
+    // --- LÓGICA PARA LA GALERÍA CON SCROLL INFINITO ---
 
-    if (galleryModal) {
-        // Buscamos todos los enlaces de la galería
-        const galleryLinks = document.querySelectorAll('.gallery-link');
-        const modalImage = document.getElementById('modalImage');
+    // Verificamos si en la página actual existe el contenedor de la galería.
+    if ($('#galeria-container').length) {
 
-        // Para cada enlace...
-        galleryLinks.forEach(link => {
-            // ...añadimos un detector de clics
-            link.addEventListener('click', function (event) {
-                // Prevenimos que el enlace intente navegar a otra página
-                event.preventDefault();
+        let page = 1;
+        const pageSize = 6;
+        let isLoading = false;
+        let noMoreImages = false;
+        let initialLoadDone = false;
 
-                // Obtenemos la ruta de la imagen grande desde el atributo 'href' del enlace
-                const imageUrl = this.getAttribute('href');
+        // Función principal para cargar imágenes vía AJAX
+        function loadMoreImages() {
+            if (isLoading || noMoreImages) {
+                return;
+            }
 
-                // Asignamos esa ruta a la imagen que está dentro del modal
-                modalImage.setAttribute('src', imageUrl);
+            isLoading = true;
+            $('#loading-spinner').show();
+
+            $.ajax({
+                url: '/Institucional/GetGaleriaImages',
+                type: 'GET',
+                data: { page: page, pageSize: pageSize },
+                success: function (images) {
+                    if (images && images.length > 0) {
+                        images.forEach(function (img) {
+                            const imageHtml = `
+                                <div class="col-lg-4 col-md-6 gallery-item">
+                                    <a href="${img.url}" data-lightbox="institucional-galeria" data-title="${img.title}">
+                                        <img src="${img.thumbnailUrl}" class="img-fluid img-thumbnail" alt="${img.altText}">
+                                    </a>
+                                </div>`;
+                            $('#galeria-container').append(imageHtml);
+                        });
+                        page++;
+                    } else {
+                        noMoreImages = true;
+                        $('#loading-spinner').hide();
+                        $('#no-more-images-message').show();
+                    }
+                },
+                error: function () {
+                    console.error("Error al cargar las imágenes.");
+                    $('#loading-spinner').hide();
+                },
+                complete: function () {
+                    isLoading = false;
+                    if (!noMoreImages) {
+                        $('#loading-spinner').hide();
+                    }
+                }
             });
+        }
+
+        // Manejo de pestañas para la carga inicial
+        const galeriaTabButton = document.querySelector('button[data-bs-target="#galeria-pane"]');
+        if (galeriaTabButton) {
+            galeriaTabButton.addEventListener('shown.bs.tab', function () {
+                if (!initialLoadDone) {
+                    loadMoreImages();
+                    initialLoadDone = true;
+                }
+            });
+        }
+
+        // Manejo del scroll infinito dentro del contenedor
+        $('#galeria-scroll-wrapper').on('scroll', function () {
+            const element = this;
+            if (element.scrollTop + element.clientHeight >= element.scrollHeight - 100) {
+                loadMoreImages();
+            }
         });
-    }
-});
+    } // Cierre del if ('#galeria-container')
+
+    // Configuración global de Lightbox
+    // Esta línea debe ejecutarse para que la navegación y el cierre funcionen
+    lightbox.option({
+        'resizeDuration': 200,
+        'wrapAround': true,
+        'albumLabel': "Imagen %1 de %2"
+    });
+
+}); // Cierre del $(document).ready()
