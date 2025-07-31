@@ -570,12 +570,12 @@ body {
 }
 
 /* 4. Efecto hover mejorado */
-.gallery-item a:hover .img-thumbnail {
-    transform: scale(1.1); /* Hacemos el zoom un poco más notorio */
-    cursor: pointer;
-}
+/*.gallery-item a:hover .img-thumbnail {
+    transform: scale(1.1);*/ /* Hacemos el zoom un poco más notorio */
+    /*cursor: pointer;
+}*/
 
-/* 5. Velo sutil que aparece en el hover */
+/* 4. Velo sutil que aparece en el hover */
 .gallery-item a::after {
     content: '';
     position: absolute;
