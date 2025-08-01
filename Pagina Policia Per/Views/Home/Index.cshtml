@@ -54,27 +54,82 @@
 </div>
 
 <!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS -->
-<div class="bg-light">
-    <div class="container py-5">
-        <h2 class="section-title">Servicios Destacados</h2>
-        <div class="row service-tabs-container">
-            <div class="col-lg-4">
-                <div class="nav flex-column nav-pills" role="tablist">
-                    <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button"><i class="fas fa-hand-holding-heart me-3"></i><span>Atención a la Violencia de Género</span></button>
-                    <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button"><i class="fas fa-car-on me-3"></i><span>Verificación del Automotor</span></button>
-                    <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button"><i class="fas fa-tractor me-3"></i><span>Prevención de Delitos Rurales</span></button>
-                    <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button"><i class="fas fa-map-location-dot me-3"></i><span>Guía de Dependencias</span></button>
+<div class="container py-5">
+    <h2 class="section-title">Accesos Útiles</h2>
+    <div class="row gy-4">
+
+        <!-- Tarjeta 1: Trámites -->
+        <div class="col-lg-4 col-md-6">
+            <a asp-controller="Tramites" asp-action="Index" class="access-card-visual">
+                <div class="access-card-bg" style="background-image: url('@Url.Content("/img/home-accesos/tramites.jpg")');"></div>
+                <div class="access-card-overlay"></div>
+                <div class="access-card-content">
+                    <i class="fas fa-file-alt fa-3x mb-3"></i>
+                    <h5 class="fw-bold">Trámites</h5>
                 </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="tab-content">
-                    <div class="tab-pane fade show active service-content-pane" id="servicio-violencia"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Líneas de Ayuda y Contención</h3><p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p><a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a></div></div></div>
-                    <div class="tab-pane fade service-content-pane" id="servicio-verificacion"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3><p>Consulta los requisitos y solicita tu turno online para la verificación policial.</p><a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a></div></div></div>
-                    <div class="tab-pane fade service-content-pane" id="servicio-rurales"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Protegiendo el Corazón Productivo</h3><p>Nuestras brigadas especializadas trabajan para proteger el campo entrerriano.</p><a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a></div></div></div>
-                    <div class="tab-pane fade service-content-pane" id="servicio-dependencias"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Encuentra tu Comisaría</h3><p>Accede al mapa interactivo y la guía telefónica completa de todas las dependencias.</p><a href="https://www.google.com/maps/d/viewer?mid=1JvboE1SNh60ft66K00W7RVFRK1RdW4nB&ll=-32.11999597629204%2C-59.28679049999998&z=8" target="_blank" rel="noopener noreferrer" class="btn btn-light btn-lg">Consultar Guía</a></div></div></div>
-                </div>
-            </div>
+            </a>
         </div>
+
+        <!-- Tarjeta 2: Dependencias -->
+        <div class="col-lg-4 col-md-6">
+            <a href="https://www.google.com/maps/d/viewer?mid=1JvboE1SNh60ft66K00W7RVFRK1RdW4nB" target="_blank" class="access-card-visual">
+                <div class="access-card-bg" style="background-image: url('@Url.Content("/img/home-accesos/dependencias.jpg")');"></div>
+                <div class="access-card-overlay"></div>
+                <div class="access-card-content">
+                    <i class="fas fa-building fa-3x mb-3"></i>
+                    <h5 class="fw-bold">Dependencias</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Tarjeta 3: Ingreso -->
+        <div class="col-lg-4 col-md-6">
+            <a href="https://portal.entrerios.gov.ar/ingresoper/" target="_blank" class="access-card-visual">
+                <div class="access-card-bg" style="background-image: url('@Url.Content("/img/home-accesos/ingreso.jpg")');"></div>
+                <div class="access-card-overlay"></div>
+                <div class="access-card-content">
+                    <i class="fas fa-user-plus fa-3x mb-3"></i>
+                    <h5 class="fw-bold">Ingreso a la Institución</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Tarjeta 4: Prevención -->
+        <div class="col-lg-4 col-md-6">
+            <a asp-controller="Prevencion" asp-action="Index" class="access-card-visual">
+                <div class="access-card-bg" style="background-image: url('@Url.Content("/img/home-accesos/prevencion.jpg")');"></div>
+                <div class="access-card-overlay"></div>
+                <div class="access-card-content">
+                    <i class="fas fa-shield-alt fa-3x mb-3"></i>
+                    <h5 class="fw-bold">Consejos de Prevención</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Tarjeta 5: Violencia de Género (NUEVA) -->
+        <div class="col-lg-4 col-md-6">
+            <a asp-controller="Servicios" asp-action="ViolenciaGenero" class="access-card-visual">
+                <div class="access-card-bg" style="background-image: url('@Url.Content("~/img/home-accesos/violencia-genero.jpg")');"></div>
+                <div class="access-card-overlay"></div>
+                <div class="access-card-content">
+                    <i class="fas fa-venus-mars fa-3x mb-3"></i>
+                    <h5 class="fw-bold">Violencia de Género</h5>
+                </div>
+            </a>
+        </div>
+
+        <!-- Tarjeta 6: Emergencias -->
+        <div class="col-lg-4 col-md-6">
+            <a href="#contacto" class="access-card-visual">
+                <div class="access-card-bg" style="background-image: url('@Url.Content("~/img/home-accesos/emergencias.jpg")');"></div>
+                <div class="access-card-overlay"></div>
+                <div class="access-card-content">
+                    <i class="fas fa-phone-volume fa-3x mb-3"></i>
+                    <h5 class="fw-bold">Teléfonos de Emergencia</h5>
+                </div>
+            </a>
+        </div>
+
     </div>
 </div>
 
