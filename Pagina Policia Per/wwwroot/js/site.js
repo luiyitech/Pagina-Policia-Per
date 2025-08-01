@@ -193,3 +193,88 @@ $(document).ready(function () {
     });
 
 }); // Cierre del $(document).ready()
+
+// ===================================================================
+//        LÓGICA PARA EL SCROLL INFINITO DE NOTICIAS
+// ===================================================================
+
+// Se ejecuta cuando el documento HTML está completamente cargado.
+$(document).ready(function () {
+    // Verificamos si en la página actual existe el contenedor de noticias.
+    // Esto asegura que este código solo se ejecute en la página de "Noticias".
+    if ($('#noticias-container').length) {
+
+        let page = 1;
+        const pageSize = 3; // Cuántas noticias cargar cada vez.
+        let isLoading = false;
+        let noMoreNews = false;
+
+        // Función para cargar noticias vía AJAX
+        function loadMoreNews() {
+            // Si ya estamos cargando o si ya no hay más noticias, no hacemos nada.
+            if (isLoading || noMoreNews) {
+                return;
+            }
+
+            isLoading = true; // Bloqueamos nuevas peticiones.
+            $('#loading-spinner-noticias').show(); // Mostramos el ícono de "cargando".
+
+            $.ajax({
+                url: '/Noticias/GetNoticias',
+                data: { page: page, pageSize: pageSize },
+                success: function (noticias) {
+                    if (noticias && noticias.length > 0) {
+                        noticias.forEach(function (n) {
+                            // Construimos el HTML para cada tarjeta de noticia
+                            const noticiaHtml = `
+                                <div class="col-md-12">
+                                    <div class="card noticia-card shadow-sm mb-4">
+                                        <div class="row g-0">
+                                            <div class="col-md-4">
+                                                <img src="${n.imagenUrl}" class="img-fluid rounded-start noticia-img" alt="${n.titulo}">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body d-flex flex-column">
+                                                    <h5 class="card-title">${n.titulo}</h5>
+                                                    <p class="card-text flex-grow-1">${n.resumen}</p>
+                                                    <p class="card-text mt-auto mb-2">
+                                                        <small class="text-muted">Publicado: ${n.fecha}</small>
+                                                    </p>
+                                                    <a href="${n.url}" class="btn btn-primary align-self-start">Leer más...</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>`;
+                            // Añadimos la nueva tarjeta al contenedor
+                            $('#noticias-container').append(noticiaHtml);
+                        });
+                        page++; // Preparamos para la siguiente página
+                    } else {
+                        // Si el controlador devuelve una lista vacía, significa que no hay más noticias.
+                        noMoreNews = true;
+                    }
+                },
+                error: function () {
+                    console.error("Error al cargar las noticias.");
+                },
+                complete: function () {
+                    // Cuando la petición termina (sea con éxito o error)...
+                    isLoading = false; // ...desbloqueamos para futuras peticiones.
+                    $('#loading-spinner-noticias').hide(); // ...y ocultamos el ícono de "cargando".
+                }
+            });
+        }
+
+        // Cargar el primer lote de noticias tan pronto como la página esté lista.
+        loadMoreNews();
+
+        // Detectar el scroll para cargar más
+        $(window).on('scroll', function () {
+            // Se activa cuando el usuario está a 300px (o menos) del final del documento.
+            if ($(window).scrollTop() + $(window).height() >= $(document).height() - 300) {
+                loadMoreNews();
+            }
+        });
+    }
+});

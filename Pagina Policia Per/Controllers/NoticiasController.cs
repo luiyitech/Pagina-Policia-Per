@@ -1,100 +1,49 @@
-﻿using Microsoft.AspNetCore.Hosting; // ¡NUEVO! Necesario para IWebHostEnvironment
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Pagina_Policia_Per.Models;
-using Pagina_Policia_Per.Services;
-using System.IO; // ¡NUEVO! Necesario para trabajar con rutas de archivos
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; // ¡NUEVO! Necesario para los métodos asíncronos
+using System.Threading.Tasks;
 
 namespace Pagina_Policia_Per.Controllers
 {
-    [Route("noticias")]
     public class NoticiasController : Controller
     {
-        private readonly NoticiaService _noticiaService;
-        private readonly IWebHostEnvironment _webHostEnvironment; // ¡NUEVO! Para acceder a wwwroot
-
-        // Modificamos el constructor para recibir también IWebHostEnvironment
-        public NoticiasController(NoticiaService noticiaService, IWebHostEnvironment webHostEnvironment)
+        public static readonly List<Noticia> _allNoticias = new List<Noticia>
         {
-            _noticiaService = noticiaService;
-            _webHostEnvironment = webHostEnvironment; // ¡NUEVO!
-        }
+            new Noticia { Id = 1, Titulo = "Nuevos Patrulleros para la Jefatura Departamental", Resumen = "Se incorporaron 10 nuevas unidades móviles para reforzar la seguridad...", Contenido = "...", ImagenUrl = "/img/noticias/nuevos-moviles.jpg", FechaPublicacion = new DateTime(2025, 7, 30), Slug = "nuevos-patrulleros-jefatura" },
+            new Noticia { Id = 2, Titulo = "Exitosa Capacitación en Técnicas de Reanimación", Resumen = "Más de 50 oficiales completaron el curso de RCP y primeros auxilios...", Contenido = "...", ImagenUrl = "/img/noticias/rcp.jpg", FechaPublicacion = new DateTime(2025, 7, 28), Slug = "exitosa-capacitacion-rcp" },
+            new Noticia { Id = 3, Titulo = "La División Canina Realizó una Demostración en Escuelas", Resumen = "En el marco del programa de acercamiento a la comunidad, la división canes visitó la escuela N°5...", Contenido = "...", ImagenUrl = "/img/noticias/canina.jpg", FechaPublicacion = new DateTime(2025, 7, 25), Slug = "division-canina-demostracion" },
+            new Noticia { Id = 4, Titulo = "Incautaron Mercadería de Contrabando en Ruta 14", Resumen = "Personal de la Dirección de Prevención y Seguridad Vial detuvo un camión con electrónicos...", Contenido = "...", ImagenUrl = "/img/noticias/contrabando.webp", FechaPublicacion = new DateTime(2025, 7, 22), Slug = "incautan-mercaderia-contrabando" },
+            new Noticia { Id = 5, Titulo = "Reunión Clave con Vecinos del Barrio San Martín", Resumen = "El Jefe Departamental se reunió con la comisión vecinal para coordinar nuevas estrategias...", Contenido = "...", ImagenUrl = "/img/noticias/vecinal.webp", FechaPublicacion = new DateTime(2025, 7, 20), Slug = "reunion-vecinos-san-martin" },
+            new Noticia { Id = 6, Titulo = "Abierta la Inscripción para la Escuela de Oficiales", Resumen = "Se encuentra abierto el período de inscripción para el ciclo lectivo 2026...", Contenido = "...", ImagenUrl = "/img/noticias/cadetes.webp", FechaPublicacion = new DateTime(2025, 7, 18), Slug = "inscripcion-escuela-oficiales" }
+        };
 
-        // --- ACCIONES Index() y Detalle() SE MANTIENEN IGUAL ---
-        [Route("")]
         public IActionResult Index()
         {
-            var listaDeNoticias = _noticiaService.GetAllNoticias();
-            return View(listaDeNoticias.OrderByDescending(n => n.FechaPublicacion).ToList());
+            var noticiasIniciales = new List<Noticia>(); // Creamos una lista vacía
+            return View(noticiasIniciales); // Le pasamos la lista vacía a la vista
         }
 
-        [Route("{slug}")]
-        public IActionResult Detalle(string slug)
-        {
-            if (string.IsNullOrEmpty(slug)) return BadRequest();
-            var noticia = _noticiaService.GetAllNoticias().FirstOrDefault(n => n.Slug == slug);
-            if (noticia == null) return NotFound();
-            return View(noticia);
-        }
-
-        // --- ACCIÓN Crear() [GET] SE MANTIENE IGUAL ---
-        [Route("crear")]
         [HttpGet]
-        public IActionResult Crear()
+        public async Task<IActionResult> GetNoticias(int page = 1, int pageSize = 3)
         {
-            return View();
-        }
+            await Task.Delay(500);
 
+            var noticias = _allNoticias
+                .OrderByDescending(n => n.FechaPublicacion) // Ordenamos por fecha
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .Select(n => new { // Devolvemos un objeto anónimo solo con los datos que necesitamos
+                    Titulo = n.Titulo,
+                    Resumen = n.Resumen,
+                    ImagenUrl = n.ImagenUrl,
+                    Fecha = n.FechaPublicacion.ToString("dd 'de' MMMM, yyyy"), // Formateamos la fecha
+                    Url = $"/Noticias/Detalle/{n.Slug}" // Creamos la URL
+                })
+                .ToList();
 
-        // --- ¡ACCIÓN Crear() [POST] COMPLETAMENTE ACTUALIZADA! ---
-        [Route("crear")]
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Crear(NoticiaCreateModel modelo)
-        {
-            if (ModelState.IsValid)
-            {
-                string nombreArchivoUnico = null;
-
-                // 1. Verificamos si el usuario subió un archivo
-                if (modelo.ImagenPrincipal != null)
-                {
-                    // 2. Obtenemos la ruta física a la carpeta wwwroot/img/noticias
-                    string carpetaUploads = Path.Combine(_webHostEnvironment.WebRootPath, "img", "noticias");
-
-                    // 3. Creamos un nombre de archivo único para evitar que se sobreescriban
-                    nombreArchivoUnico = Guid.NewGuid().ToString() + "_" + modelo.ImagenPrincipal.FileName;
-                    string rutaArchivo = Path.Combine(carpetaUploads, nombreArchivoUnico);
-
-                    // 4. Guardamos el archivo físicamente en el servidor
-                    //    Usamos 'using' para asegurarnos de que el flujo de archivo se cierre correctamente
-                    using (var fileStream = new FileStream(rutaArchivo, FileMode.Create))
-                    {
-                        await modelo.ImagenPrincipal.CopyToAsync(fileStream);
-                    }
-                }
-
-                // 5. Creamos el nuevo objeto Noticia, usando la ruta a la imagen que acabamos de guardar
-                var nuevaNoticia = new Noticia
-                {
-                    Id = _noticiaService.GetAllNoticias().Count + 1,
-                    Titulo = modelo.Titulo,
-                    Resumen = modelo.Resumen,
-                    Contenido = modelo.Contenido,
-                    ImagenUrl = "/img/noticias/" + nombreArchivoUnico, // ¡Usamos la nueva ruta!
-                    FechaPublicacion = DateTime.Now
-                };
-
-                // En un proyecto real, aquí llamaríamos a un método para guardar la 'nuevaNoticia' en la base de datos
-                // _noticiaService.AddNoticia(nuevaNoticia);
-
-                TempData["SuccessMessage"] = $"¡La noticia '{nuevaNoticia.Titulo}' se ha creado exitosamente!";
-                return RedirectToAction("Index");
-            }
-
-            // Si el modelo no es válido, volvemos a mostrar el formulario
-            return View(modelo);
+            return new JsonResult(noticias);
         }
     }
 }

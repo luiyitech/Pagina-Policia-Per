@@ -5,7 +5,7 @@
 
 @section Scripts {
     <style>
-        /* Define las imágenes de fondo para cada panel, usando la sintaxis correcta de ASP.NET */
+        /* Define las imágenes de fondo para cada panel */
         #servicio-violencia {
             background-image: url('@Url.Content("~/img/servicios/emergencias_llamadas.jpg")');
         }
@@ -22,7 +22,6 @@
             background-image: url('@Url.Content("~/img/servicios/mapa.jpg")');
         }
 
-        /* Corrige el color del texto e icono del botón activo */
         .service-tab-button.active {
             color: var(--dark-color) !important;
             background-color: #ffffff !important;
@@ -35,11 +34,9 @@
     </style>
 
     <script>
-        // ¡CÓDIGO FUSIONADO! Este script le asigna un ID único al body de la página de inicio.
-        // Esto permite que el CSS aplique el padding-top solo aquí y no en otras páginas.
+        // Asigna un ID único al body de la página de inicio.
         document.body.id = 'home-page';
     </script>
-}
 }
 
 <!-- 1. HERO VIDEO DE INICIO -->
@@ -56,64 +53,80 @@
     </div>
 </div>
 
-<main>
-    <!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS -->
-    <div class="bg-light">
-        <div class="container py-5">
-            <h2 class="section-title">Servicios Destacados</h2>
-            <div class="row service-tabs-container">
-                <div class="col-lg-4">
-                    <div class="nav flex-column nav-pills" role="tablist">
-                        <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button"><i class="fas fa-hand-holding-heart me-3"></i><span>Atención a la Violencia de Género</span></button>
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button"><i class="fas fa-car-on me-3"></i><span>Verificación del Automotor</span></button>
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button"><i class="fas fa-tractor me-3"></i><span>Prevención de Delitos Rurales</span></button>
-                        <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button"><i class="fas fa-map-location-dot me-3"></i><span>Guía de Dependencias</span></button>
-                    </div>
+<!-- 2. SECCIÓN DE SERVICIOS INTERACTIVOS -->
+<div class="bg-light">
+    <div class="container py-5">
+        <h2 class="section-title">Servicios Destacados</h2>
+        <div class="row service-tabs-container">
+            <div class="col-lg-4">
+                <div class="nav flex-column nav-pills" role="tablist">
+                    <button class="nav-link service-tab-button active" data-bs-toggle="pill" data-bs-target="#servicio-violencia" type="button"><i class="fas fa-hand-holding-heart me-3"></i><span>Atención a la Violencia de Género</span></button>
+                    <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-verificacion" type="button"><i class="fas fa-car-on me-3"></i><span>Verificación del Automotor</span></button>
+                    <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-rurales" type="button"><i class="fas fa-tractor me-3"></i><span>Prevención de Delitos Rurales</span></button>
+                    <button class="nav-link service-tab-button" data-bs-toggle="pill" data-bs-target="#servicio-dependencias" type="button"><i class="fas fa-map-location-dot me-3"></i><span>Guía de Dependencias</span></button>
                 </div>
-                <div class="col-lg-8">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active service-content-pane" id="servicio-violencia"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Líneas de Ayuda y Contención</h3><p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p><a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a></div></div></div>
-                        <div class="tab-pane fade service-content-pane" id="servicio-verificacion"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3><p>Consulta los requisitos y solicita tu turno online para la verificación policial.</p><a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a></div></div></div>
-                        <div class="tab-pane fade service-content-pane" id="servicio-rurales"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Protegiendo el Corazón Productivo</h3><p>Nuestras brigadas especializadas trabajan para proteger el campo entrerriano.</p><a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a></div></div></div>
-                        <div class="tab-pane fade service-content-pane" id="servicio-dependencias"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Encuentra tu Comisaría</h3><p>Accede al mapa interactivo y la guía telefónica completa de todas las dependencias.<a href="https://www.google.com/maps/d/viewer?mid=1JvboE1SNh60ft66K00W7RVFRK1RdW4nB&ll=-32.11999597629204%2C-59.28679049999998&z=8" target="_blank" rel="noopener noreferrer" class="btn btn-light btn-lg">Consultar Guía</a></div></div></div>
-                    </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active service-content-pane" id="servicio-violencia"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Líneas de Ayuda y Contención</h3><p>Ofrecemos asesoramiento y protección integral a víctimas de violencia de género las 24 horas. No estás sola.</p><a asp-controller="Servicios" asp-action="ViolenciaGenero" class="btn btn-light btn-lg">Buscar Ayuda Ahora</a></div></div></div>
+                    <div class="tab-pane fade service-content-pane" id="servicio-verificacion"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Verifica tu Vehículo de Forma Segura</h3><p>Consulta los requisitos y solicita tu turno online para la verificación policial.</p><a asp-controller="Tramites" asp-action="Verificacion" class="btn btn-light btn-lg">Iniciar Trámite</a></div></div></div>
+                    <div class="tab-pane fade service-content-pane" id="servicio-rurales"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Protegiendo el Corazón Productivo</h3><p>Nuestras brigadas especializadas trabajan para proteger el campo entrerriano.</p><a asp-controller="Divisiones" asp-action="DelitosRurales" class="btn btn-light btn-lg">Contactar Brigadas</a></div></div></div>
+                    <div class="tab-pane fade service-content-pane" id="servicio-dependencias"><div class="service-pane-overlay"><div class="service-pane-text"><h3 class="fw-bold">Encuentra tu Comisaría</h3><p>Accede al mapa interactivo y la guía telefónica completa de todas las dependencias.</p><a href="https://www.google.com/maps/d/viewer?mid=1JvboE1SNh60ft66K00W7RVFRK1RdW4nB&ll=-32.11999597629204%2C-59.28679049999998&z=8" target="_blank" rel="noopener noreferrer" class="btn btn-light btn-lg">Consultar Guía</a></div></div></div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- 3. SECCIÓN "ÚLTIMAS NOTICIAS DESTACADAS" -->
-    <div class="container py-5">
-        <h2 class="section-title">Actualidad Policial</h2>
-        <div class="row">
+<!-- =================================================================== -->
+<!--     3. SECCIÓN "ÚLTIMAS NOTICIAS" (VERSIÓN DINÁMICA CORREGIDA)     -->
+<!-- =================================================================== -->
+<div class="container py-5">
+    <h2 class="section-title">Actualidad Policial</h2>
+    <div class="row">
+        @if (Model != null && Model.Any())
+        {
             @foreach (var noticia in Model)
             {
-                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch news-card"><div class="card h-100 w-100"><img src="@noticia.ImagenUrl" class="card-img-top" alt="@noticia.Titulo"><div class="card-body d-flex flex-column"><h5 class="card-title">@noticia.Titulo</h5><p class="card-text flex-grow-1">@noticia.Resumen</p><p class="card-text mt-2"><small class="text-muted">Publicado: @noticia.FechaPublicacion.ToShortDateString()</small></p><a asp-controller="Noticias" asp-action="Detalle" asp-route-slug="@noticia.Slug" class="btn btn-outline-primary mt-auto">Leer más</a></div></div></div>
+                <div class="col-lg-4 col-md-6 mb-4 d-flex align-items-stretch">
+                    <div class="card h-100 w-100 noticia-card">
+                        <img src="@Url.Content(noticia.ImagenUrl)" class="card-img-top" style="height: 200px; object-fit: cover;" alt="@noticia.Titulo">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@noticia.Titulo</h5>
+                            <p class="card-text flex-grow-1">@noticia.Resumen</p>
+                            <p class="card-text mt-2"><small class="text-muted">Publicado: @noticia.FechaPublicacion.ToString("dd 'de' MMMM, yyyy")</small></p>
+                            <a asp-controller="Noticias" asp-action="Detalle" asp-route-slug="@noticia.Slug" class="btn btn-primary mt-auto align-self-start">Leer más...</a>
+                        </div>
+                    </div>
+                </div>
             }
-        </div>
-        <div class="text-center mt-4"><a class="btn btn-primary" asp-controller="Noticias" asp-action="Index">Ver Todas las Noticias</a></div>
+        }
+        else
+        {
+            <p class="text-center">No hay noticias para mostrar en este momento.</p>
+        }
     </div>
+    <div class="text-center mt-4">
+        <a class="btn btn-outline-primary btn-lg" asp-controller="Noticias" asp-action="Index">Ver Todas las Noticias</a>
+    </div>
+</div>
 
-    <!-- 4. SECCIÓN "NUESTRA LABOR EN NÚMEROS" (Versión Fondo Animado) -->
-    <div id="plexus-bg" class="stats-section-animated text-white position-relative">
-        <div class="container py-5 text-center position-relative" style="z-index: 2;">
-            <h2 class="section-title" style="color:white;">Nuestra Labor en Números</h2>
-            <div class="row">
-                <!-- Cifra 1: Llamadas al 911 -->
-                <div class="col-md-4 mb-4 mb-md-0"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-phone-volume me-3"></i><span>+1.2M</span></div><p class="lead mt-2">Llamadas al 911 Anuales</p><p class="text-white">Respondiendo a cada emergencia ciudadana.</p></div>
-                <!-- Cifra 2: Lucha contra el Narcotráfico -->
-                <div class="col-md-4 mb-4 mb-md-0"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-box-archive me-3"></i><span>+350kg</span></div><p class="lead mt-2">Narcóticos Incautados</p><p class="text-white">Golpes certeros al narcotráfico en el último año.</p></div>
-                <!-- Cifra 3: Vehículos Recuperados -->
-                <div class="col-md-4"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-car-side me-3"></i><span>+800</span></div><p class="lead mt-2">Vehículos Recuperados</p><p class="text-white">Devolviendo el patrimonio a sus legítimos dueños.</p></div>
-            </div>
+
+<!-- 4. SECCIÓN "NUESTRA LABOR EN NÚMEROS" -->
+<div id="plexus-bg" class="stats-section-animated text-white position-relative">
+    <div class="container py-5 text-center position-relative" style="z-index: 2;">
+        <h2 class="section-title" style="color:white;">Nuestra Labor en Números</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-phone-volume me-3"></i><span>+1.2M</span></div><p class="lead mt-2">Llamadas al 911 Anuales</p><p class="text-white">Respondiendo a cada emergencia ciudadana.</p></div>
+            <div class="col-md-4 mb-4 mb-md-0"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-box-archive me-3"></i><span>+350kg</span></div><p class="lead mt-2">Narcóticos Incautados</p><p class="text-white">Golpes certeros al narcotráfico en el último año.</p></div>
+            <div class="col-md-4"><div class="display-4 fw-bold d-flex align-items-center justify-content-center"><i class="fas fa-car-side me-3"></i><span>+800</span></div><p class="lead mt-2">Vehículos Recuperados</p><p class="text-white">Devolviendo el patrimonio a sus legítimos dueños.</p></div>
         </div>
     </div>
+</div>
 
-    <!-- 5. SECCIÓN LLAMADA A LA ACCIÓN -->
-    <div class="container py-5 text-center">
-        <h2 class="section-title">Únete a la Fuerza</h2>
-        <p class="lead mb-4">Forma parte de una institución con historia y vocación de servicio. Conoce los requisitos para la inscripción.</p>
-<a href="https://portal.entrerios.gov.ar/ingresoper/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Conviértete en uno de nosotros</a>    </div>
-
-</main>
-
+<!-- 5. SECCIÓN LLAMADA A LA ACCIÓN -->
+<div class="container py-5 text-center">
+    <h2 class="section-title">Únete a la Fuerza</h2>
+    <p class="lead mb-4">Forma parte de una institución con historia y vocación de servicio. Conoce los requisitos para la inscripción.</p>
+    <a href="https://portal.entrerios.gov.ar/ingresoper/" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-lg">Conviértete en uno de nosotros</a>
+</div>
