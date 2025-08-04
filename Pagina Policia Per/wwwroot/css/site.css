@@ -656,3 +656,62 @@ body {
     opacity: 1; /* El velo de color se hace más intenso */
     background-color: rgba(0, 21, 68, 0.7); /* Azul más oscuro e intenso */
 }
+
+/* ============================================= */
+/* ==      ESTILOS PÁGINA TRÁMITES MODERNA     == */
+/* ============================================= */
+
+.tramites-grid-container {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.tramite-card-moderno {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 280px;
+    border-radius: 15px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+    .tramite-card-moderno::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%);
+        transition: background-color 0.3s ease;
+    }
+
+    .tramite-card-moderno:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+    }
+
+    .tramite-card-moderno .titulo-tramite {
+        position: relative;
+        z-index: 2;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-align: center;
+        padding: 1rem;
+        text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        transition: transform 0.3s ease;
+        align-self: flex-end; /* Alinea el título en la parte inferior */
+        width: 100%;
+    }
+
+    .tramite-card-moderno:hover .titulo-tramite {
+        transform: translateY(-10px);
+    }

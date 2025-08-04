@@ -1,0 +1,25 @@
+﻿@model List<Pagina_Policia_Per.Models.Tramite>
+@{
+    ViewData["Title"] = "Trámites";
+}
+
+<div class="container tramites-grid-container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Trámites y Servicios</h1>
+        <p class="lead text-muted">Acceso centralizado a todos los servicios para el ciudadano.</p>
+    </div>
+
+    <div class="row g-4 g-lg-5">
+        @foreach (var tramite in Model)
+        {
+            <div class="col-lg-4 col-md-6">
+                <a href="@tramite.UrlDestino"
+                   class="tramite-card-moderno"
+                   style="background-image: url('@tramite.ImagenUrl');"
+                   title="@tramite.Titulo">
+                    <h3 class="titulo-tramite">@tramite.Titulo</h3>
+                </a>
+            </div>
+        }
+    </div>
+</div>
