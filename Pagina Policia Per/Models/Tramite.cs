@@ -3,8 +3,8 @@
     public class Tramite
     {
         public int Id { get; set; }
-        public string Titulo { get; set; }
-        public string ImagenUrl { get; set; }
-        public string UrlDestino { get; set; }
+        public string? Titulo { get; set; }      // La '?' es importante
+        public string? ImagenUrl { get; set; }   // La '?' es importante
+        public string? UrlDestino { get; set; }  // La '?' es importante
     }
 }
