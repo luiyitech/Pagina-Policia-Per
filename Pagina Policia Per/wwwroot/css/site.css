@@ -711,11 +711,10 @@ body {
     padding-bottom: 4rem; /* Mantenemos el espacio inferior */
 }
 
-/* ================================================================= */
-/* ==      ANULACIÓN DE HOVER SOLO PARA SECCIÓN TRÁMITES         == */
-/* ================================================================= */
+/* ============================================================= */
+/* ==   ANULACIÓN DE HOVER EN TARJETAS DE PÁGINAS DE DETALLE   == */
+ /* ============================================================= */
 
-.tramites-container .tramite-card-final:hover {
-    transform: none; /* Anula el movimiento hacia arriba */
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Devuelve la sombra a su estado original */
+.main-content-container .card:hover {
+        transform: none;
 }

@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Transacciones Ganaderas";
+}
+
+<div class="container main-content-container">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Transacciones Ganaderas</h1>
+        <p class="lead text-muted">Procedimientos y requisitos para el movimiento y transporte de hacienda.</p>
+    </div>
+
+    <div class="row g-5">
+        <!-- Columna Izquierda con la Información -->
+        <div class="col-lg-7">
+
+            <div class="alert alert-info">
+                <strong>Movimiento de Haciendas:</strong> Todo movimiento de animales debe estar amparado por un documento denominado <strong>GUÍA</strong>. Dicho documento es gestionado de manera online y visado por la Autoridad Policial.
+            </div>
+
+            <h3 class="mt-5">Índice de Información</h3>
+            <div class="accordion" id="infoGanaderaAccordion">
+
+                <!-- Requisitos para Certificado Guía -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseRequisitos">Requisitos para Solicitar Certificado Guía</button></h2>
+                    <div id="collapseRequisitos" class="accordion-collapse collapse show" data-bs-parent="#infoGanaderaAccordion">
+                        <div class="accordion-body">
+                            <p>La guía se realiza de manera online y por sistema autogestión. Cada ganadero debe registrarse con usuario y contraseña y poseer un Documento de Tránsito Electrónico (DT-e) del SENASA.</p>
+                            <a href="https://www.entrerios.gov.ar/guiaganadera" target="_blank" class="btn btn-danger mb-2">Solicitar Guía Ganadera (Gobierno de E.R.)</a>
+                            <a href="https://www.argentina.gob.ar/senasa/micrositios/dte" target="_blank" class="btn btn-danger mb-2">Obtener DT-e (SENASA)</a>
+                            <hr>
+                            <h6>Requisitos Adicionales:</h6>
+                            <ul>
+                                <li>Ser propietario del <strong>CARNET DE MARCA</strong> (ganado mayor) o <strong>CARNET DE SEÑAL</strong> (ganado menor). Se tramita en ATER.</li>
+                                <li>Poder de escribano público o juez de paz si un tercero realiza la operación en nombre del titular.</li>
+                                <li>El visado en la dependencia policial es sin costo alguno y se realiza en horarios de comercio.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transporte de Haciendas -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransporte">Transporte de Haciendas</button></h2>
+                    <div id="collapseTransporte" class="accordion-collapse collapse" data-bs-parent="#infoGanaderaAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Circular con la habilitación del vehículo extendida por el SENASA.</li>
+                                <li>Vehículo lavado y desinfectado en lavadero autorizado (validez de 72 hs).</li>
+                                <li>Contar con el DT-e, que debe corresponderse con la cantidad de animales de la guía visada.</li>
+                                <li>Todo animal deberá presentar marca o señal claramente visible y legible.</li>
+                            </ul>
+                            <div class="alert alert-warning mt-3"><strong>Importante:</strong> El DT-e tiene un vencimiento de 96 horas (4 días) y la guía tiene una vigencia de 7 días corridos.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controles y Otros -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseControles">Controles, Agentes y Otros</button></h2>
+                    <div id="collapseControles" class="accordion-collapse collapse" data-bs-parent="#infoGanaderaAccordion">
+                        <div class="accordion-body">
+                            <p><strong>Controles Policiales:</strong> La institución fiscaliza las transacciones, inspeccionando carga, descarga y tránsito en rutas para verificar la legalidad de la documentación.</p>
+                            <p><strong>Contramarcado:</strong> Al vender un animal, el propietario debe marcarlo con su marca al revés, debajo de la original, para indicar el cambio de titularidad.</p>
+                            <p><strong>Ampliación de Jurisdicción:</strong> Para operar en una jurisdicción no autorizada, se debe solicitar la ampliación a ATER.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Columna Derecha con Mapa -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold">
+                    <i class="fas fa-map-marked-alt me-2"></i>Mapa de Brigadas de Prevención de Delitos Rurales
+                </div>
+                <div class="card-body p-0">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1c0L2BoN5WXkmoY33ghjGSgir7vl_Lz-N" width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Volver a todos los Trámites
+        </a>
+    </div>
+</div>

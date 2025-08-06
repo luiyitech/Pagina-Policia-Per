@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "Agencias de Vigilancia Privada";
+}
+
+<div class="container main-content-container">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Agencias de Vigilancia Privada</h1>
+        <p class="lead text-muted">Requisitos para la habilitación y renovación de agencias de seguridad.</p>
+    </div>
+
+    <div class="row g-5">
+        <!-- Columna Izquierda con la Información -->
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header fs-5 fw-bold bg-light">Información de Contacto</div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Dirección Investigaciones</strong><br>División Trata de Personas – Sección Vigilancia Privada.</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-map-marker-alt text-primary me-2"></i><strong>Dirección:</strong> Montevideo Nº 105 esquina Pellegrini.</li>
+                        <li><i class="fas fa-envelope text-primary me-2"></i><strong>Mail:</strong> dinv_dtp_svp@policiadeentrerios.gob.ar</li>
+                        <li><i class="fas fa-clock text-primary me-2"></i><strong>Horario:</strong> Lunes a Viernes de 08:00 a 12:30 hs.</li>
+                        <li><i class="fas fa-phone text-primary me-2"></i><strong>Contacto:</strong> 343-4209996.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="alert alert-secondary">
+                <strong>Normativa vigente:</strong> Decreto MGJ 2940/01 y modificatoria Decreto MGJ 4040/12.<br>
+                <span class="fw-bold">TODA LA DOCUMENTACIÓN DEBE SER PRESENTADA ANTE ESTA OFICINA.</span>
+            </div>
+
+            <h3 class="mt-5">Requisitos para Habilitación y/o Renovación</h3>
+            <div class="accordion" id="requisitosAccordion">
+
+                <!-- Requisitos Generales -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGeneral">Requisitos Generales (Art. 1º, 4º, 6º y 7º)</button></h2>
+                    <div id="collapseGeneral" class="accordion-collapse collapse show" data-bs-parent="#requisitosAccordion">
+                        <div class="accordion-body">
+                            <p>Toda persona física o jurídica que se establezca como “Agencia Particular de Vigilancia y Seguridad” deberá cumplir con lo siguiente:</p>
+                            <ul>
+                                <li>Personas jurídicas deben constituirse como S.A., S.R.L. o Sociedad Colectiva (Ley Nº 19.550).</li>
+                                <li>Solo podrán ejercer sus funciones después de ser habilitadas por el Poder Ejecutivo Provincial.</li>
+                                <li>La habilitación será por el término de un (1) año, renovable por el Jefe de Policía. La solicitud de renovación debe hacerse 30 días antes del vencimiento.</li>
+                                <li>Al solicitar la habilitación, se deberá informar por escrito la denominación, nómina de integrantes, designación de autoridades, rubros de explotación, domicilios, y más.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Director Técnico Ejecutivo -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDTE">Director Técnico Ejecutivo (D.T.E.)</button></h2>
+                    <div id="collapseDTE" class="accordion-collapse collapse" data-bs-parent="#requisitosAccordion">
+                        <div class="accordion-body">
+                            <p>La Agencia deberá designar un Director Técnico Ejecutivo (D.T.E.) a cargo de la faz operativa, quien no podrá desempeñarse en similar cargo en otra agencia.</p>
+                            <strong>Requisitos del D.T.E. (Art. 9º):</strong>
+                            <ul>
+                                <li>Mayor de 18 años (21 si posee armas), y no superar los 65 años (salvo tareas administrativas).</li>
+                                <li>No contar con procesos judiciales ni antecedentes desfavorables.</li>
+                                <li>Presentar certificado de buena conducta y vecindad.</li>
+                                <li>No pertenecer al personal en actividad de FFAA, de Seguridad o Policiales.</li>
+                                <li>No haber sido exonerado de la Administración Pública.</li>
+                                <li>Poseer aptitud psicofísica y técnica para la función.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Titular o Propietario -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTitular">Titular, Propietario o Representante Legal (Art. 13º)</button></h2>
+                    <div id="collapseTitular" class="accordion-collapse collapse" data-bs-parent="#requisitosAccordion">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Ser ciudadano argentino (nativo, por opción o naturalizado).</li>
+                                <li>Tener como mínimo treinta (30) años de edad.</li>
+                                <li>No estar concursado ni haber sido calificado culpable en concursos anteriores.</li>
+                                <li>Acreditar solvencia económica con declaración de bienes no inferiores a $250.000 o seguro de caución equivalente.</li>
+                                <li>Presentar constancias de libre deuda de AFIP, ATER y Municipalidad.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Información de Pago -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePago">Información de Pago</button></h2>
+                    <div id="collapsePago" class="accordion-collapse collapse" data-bs-parent="#requisitosAccordion">
+                        <div class="accordion-body">
+                            <p>Los depósitos deberán hacerse a:</p>
+                            <ul class="list-group">
+                                <li class="list-group-item"><strong>Cuenta Corriente Policía de Entre Ríos:</strong> Nº 00100009267/8</li>
+                                <li class="list-group-item"><strong>CBU (Transferencia):</strong> 3860001001000000926783</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Columna Derecha con Mapa -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold">
+                    <i class="fas fa-map-marked-alt me-2"></i>Ubicación de la Oficina
+                </div>
+                <div class="card-body p-0">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d848.3024964709078!2d-60.53450165224028!3d-31.737468845449907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b4527f8b421067%3A0xdb6a2cc25556dd8e!2sMontevideo%20105%2C%20Paran%C3%A1%2C%20Entre%20R%C3%ADos!5e0!3m2!1ses!2sar!4v1623366707588!5m2!1ses!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Volver a todos los Trámites
+        </a>
+    </div>
+</div>

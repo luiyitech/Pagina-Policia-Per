@@ -3,14 +3,13 @@
     ViewData["Title"] = "Trámites";
 }
 
-<!-- CAMBIO CLAVE: Usamos nuestra propia clase 'main-content-container' -->
 <div class="container main-content-container">
     <div class="text-center mb-5">
         <h1 class="display-4 fw-bold">Trámites y Servicios</h1>
         <p class="lead text-muted">Acceso centralizado a todos los servicios para el ciudadano.</p>
     </div>
 
-    <!-- Fila 1 (3 Botones) -->
+    <!-- Fila 1 (3 Botones) - Sin cambios -->
     <div class="row g-4 justify-content-center">
         @for (int i = 0; i < 3; i++)
         {
@@ -22,11 +21,13 @@
         }
     </div>
 
-    <!-- Fila 2 (5 Botones) -->
+    <!-- Fila 2 (AHORA 4 Botones) -->
     <div class="row g-4 mt-1 justify-content-center">
-        @for (int i = 3; i < 8; i++)
+        <!-- CAMBIO 1: El bucle ahora itera sobre los siguientes 4 elementos -->
+        @for (int i = 3; i < 7; i++)
         {
-            <div class="col-lg col-md-6 col-12">
+            <!-- CAMBIO 2: Usamos 'col-lg-3' para crear una fila de 4 columnas perfectas en desktop -->
+            <div class="col-lg-3 col-md-6 col-12">
                 <a href="@Model[i].UrlDestino" class="tramite-card-final" style="background-image: url('@Model[i].ImagenUrl');">
                     <h5 class="titulo-tramite">@Model[i].Titulo</h5>
                 </a>
@@ -34,9 +35,10 @@
         }
     </div>
 
-    <!-- Fila 3 (3 Botones) -->
+    <!-- Fila 3 (Últimos 3 Botones) -->
     <div class="row g-4 mt-3 justify-content-center">
-        @for (int i = 8; i < 11; i++)
+        <!-- CAMBIO 3: El bucle ahora empieza desde el índice 7 hasta el final (10) -->
+        @for (int i = 7; i < 10; i++)
         {
             <div class="col-lg-4 col-md-6 col-12">
                 <a href="@Model[i].UrlDestino" class="tramite-card-final" style="background-image: url('@Model[i].ImagenUrl');">

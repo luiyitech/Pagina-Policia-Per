@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Verificación de Automotores";
+}
+
+<div class="container main-content-container">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Verificación de Automotores</h1>
+        <p class="lead text-muted">Documentación y aranceles para la verificación de su vehículo.</p>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+        <!-- Columna Izquierda con la Información -->
+        <div class="col-lg-7">
+
+            <!-- Card de Documentación -->
+            <div class="card shadow-sm mb-5">
+                <div class="card-header fs-5 fw-bold bg-light">
+                    <i class="fas fa-folder-open me-2"></i>Documentación a Presentar
+                </div>
+                <div class="card-body p-4">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item fs-5">Cédula o Título del Automotor</li>
+                        <li class="list-group-item fs-5">Formulario 12</li>
+                        <li class="list-group-item fs-5">D.N.I. de la persona que realiza el trámite</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card de Aranceles -->
+            <div class="card shadow-sm">
+                <div class="card-header fs-5 fw-bold bg-light">
+                    <i class="fas fa-dollar-sign me-2"></i>Aranceles de Verificación
+                </div>
+                <div class="card-body p-4">
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="fs-5">Automotores</span>
+                            <span class="fs-4 fw-bold text-success">$31.894,25</span>
+                        </div>
+                        <div class="list-group-item d-flex justify-content-between align-items-center">
+                            <span class="fs-5">Motovehículos</span>
+                            <span class="fs-4 fw-bold text-success">$16.585,01</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Columna Derecha con Mapa -->
+        <div class="col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-header fw-bold">
+                    <i class="fas fa-map-marked-alt me-2"></i>Plantas Verificadoras en Entre Ríos
+                </div>
+                <div class="card-body p-0">
+                    <!-- MAPA CORRECTO EXTRAÍDO DE TU CÓDIGO FUENTE -->
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1S-ypTsjdK4bQ_t_aRC6QM8thl1VRE8UR" width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Volver a todos los Trámites
+        </a>
+    </div>
+</div>
