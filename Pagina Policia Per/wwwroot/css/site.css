@@ -702,3 +702,11 @@ body {
         font-weight: 700;
         text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
     }
+
+/* ============================================= */
+/* ==      CONTENEDOR DE PÁGINA PRINCIPAL      == */
+/* ============================================= */
+.main-content-container {
+    padding-top: 8rem; /* 4rem es un espaciado generoso, similar a mt-5 */
+    padding-bottom: 4rem; /* Mantenemos el espacio inferior */
+}
