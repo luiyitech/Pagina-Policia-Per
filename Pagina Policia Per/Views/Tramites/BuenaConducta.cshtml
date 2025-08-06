@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Certificado de Buena Conducta";
+}
+
+<div class="container main-content-container">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Certificado de Buena Conducta</h1>
+        <p class="lead text-muted">Información y requisitos para solicitar su certificado.</p>
+    </div>
+
+    <!-- Pestañas de Navegación -->
+    <ul class="nav nav-pills justify-content-center mb-4" id="buenaConductaTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="parana-tab" data-bs-toggle="pill" data-bs-target="#parana-pane" type="button" role="tab">
+                Departamento Paraná
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="resto-tab" data-bs-toggle="pill" data-bs-target="#resto-pane" type="button" role="tab">
+                Resto de la Provincia
+            </button>
+        </li>
+    </ul>
+
+    <!-- Contenido de las Pestañas -->
+    <div class="tab-content" id="buenaConductaTabContent">
+
+        <!-- Pestaña 1: Paraná -->
+        <div class="tab-pane show active" id="parana-pane" role="tabpanel">
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <h3 class="card-title">Requisitos para el Departamento Paraná</h3>
+                    <hr>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">El trámite sólo se realiza para personas con domicilio en el Departamento Paraná.</li>
+                        <li class="list-group-item">Foto carnet 4x4 con fondo celeste o blanco, ACTUALIZADA.</li>
+                        <li class="list-group-item">Documento Nacional de Identidad con domicilio real y actualizado, sin excepción.</li>
+                        <li class="list-group-item">Fotocopia del Documento Nacional de Identidad con buena nitidez.</li>
+                    </ol>
+                    <div class="alert alert-warning mt-4">
+                        <h4 class="alert-heading">¡Importante!</h4>
+                        <p><strong>Menores de edad:</strong> Deben concurrir acompañados de padre, madre o tutor con DNI y fotocopia.</p>
+                        <hr>
+                        <p class="mb-0"><strong>Extranjeros:</strong> Deben concurrir con Documento Nacional de Identidad, Cédula de Identidad o Pasaporte y presentar Certificado de Reincidencia (Antecedentes Penales Argentinos), además de la documentación antes mencionada.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.158550186835!2d-60.52843488484403!3d-31.73945988129806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b45281dd78249b%3A0x6a0f195e4e68e4f5!2sLaprida%20460%2C%20E3100%20Paran%C3%A1%2C%20Entre%20R%C3%ADos!5e0!3m2!1ses!2sar!4v1662999538355!5m2!1ses!2sar" width="100%" height="450" style="border:0; border-radius: 12px; max-width: 800px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <!-- Pestaña 2: Resto de la Provincia -->
+        <div class="tab-pane" id="resto-pane" role="tabpanel">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="card-title">Jefaturas Departamentales</h3>
+                            <p class="text-muted">Expanda la sección correspondiente a su localidad para ver la información de contacto.</p>
+
+                            <!-- ACORDEÓN CON TODOS LOS DATOS CARGADOS -->
+                            <div class="accordion" id="jefaturasAccordion">
+
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColon">COLÓN</button></h2><div id="collapseColon" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. COLON - 12 DE ABRIL Nº 501</p><p><strong>Localidad:</strong> Colón</p><p><strong>Email:</strong> Antecper.colon@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03447-471111</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConcordia">CONCORDIA</button></h2><div id="collapseConcordia" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. CONCORDIA - PELLEGRINI Nº 627</p><p><strong>Localidad:</strong> Concordia</p><p><strong>Email:</strong> antecedentesperscdia@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 0345-4212841</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUruguay">C. DEL URUGUAY</button></h2><div id="collapseUruguay" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. URUGUAY - SAN MARTIN N°713</p><p><strong>Localidad:</strong> Uruguay</p><p><strong>Email:</strong> antecedentesuruguay@live.com.ar</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03442-15474881</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDiamante">DIAMANTE</button></h2><div id="collapseDiamante" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. DIAMANTE - EVA PERON N° 258</p><p><strong>Localidad:</strong> Diamante</p><p><strong>Email:</strong> antecedentesdiamante@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 0343-4981700</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGualeguay">GUALEGUAY</button></h2><div id="collapseGualeguay" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. GUALEGUAY - 1° DE MAYO N° 125</p><p><strong>Localidad:</strong> Gualeguay</p><p><strong>Email:</strong> Jdgy_di@policiadeentrerios.gob.ar</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 y de 18:00 a 20 horas</p><p><strong>Teléfono:</strong> 03444-424980</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGchu">GUALEGUAYCHÚ</button></h2><div id="collapseGchu" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. GUALEGUAYCHU - SAENZ PEÑA N° 26</p><p><strong>Localidad:</strong> Gualeguaychú</p><p><strong>Email:</strong> antecedentespersonales@jdgu.com.ar</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 3436101497</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFederal">FEDERAL</button></h2><div id="collapseFederal" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. FEDERAL - PARANÁ N° 438</p><p><strong>Localidad:</strong> Federal</p><p><strong>Email:</strong> sap224_federal@hotmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03454-421119</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFeliciano">FELICIANO</button></h2><div id="collapseFeliciano" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. FELICIANO - HIPÓLITO IRIGOYEN N° 37</p><p><strong>Localidad:</strong> Feliciano</p><p><strong>Email:</strong> antecedentesycrearfeliciano@hotmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03458-420605</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseIslas">ISLAS DEL IBICUY</button></h2><div id="collapseIslas" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. ISLAS DEL IBICUY - CONSCRIPTO GIORGI Y CABO ROSENDO BLANCO</p><p><strong>Localidad:</strong> Villa Paranacito</p><p><strong>Email:</strong> antecedentesislas@hotmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 0343-4602090</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLaPaz">LA PAZ</button></h2><div id="collapseLaPaz" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. LA PAZ - ECHAGUE N° 877</p><p><strong>Localidad:</strong> La Paz</p><p><strong>Email:</strong> seccionantecedenteslapaz@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03437-422111</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNogoya">NOGOYA</button></h2><div id="collapseNogoya" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. NOGOYÁ - QUIROGA Y TABUADA N° 952</p><p><strong>Localidad:</strong> Nogoya</p><p><strong>Email:</strong> Jdna_sa@policiadeentrerios.gob.ar</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03435-422222</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTala">ROSARIO DEL TALA</button></h2><div id="collapseTala" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. TALA - ROQUE SÁENZ PEÑA N° 274</p><p><strong>Localidad:</strong> Tala</p><p><strong>Email:</strong> investigacionestala@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 08:00 a 12:30 horas</p><p><strong>Teléfono:</strong> 03445-421550</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSalvador">SAN SALVADOR</button></h2><div id="collapseSalvador" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. SAN SALVADOR - SAN MARTIN N° 457</p><p><strong>Localidad:</strong> San Salvador</p><p><strong>Email:</strong> Div.investigaciones.ss@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 0345-4910074 / 0345-4911318</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVillaguay">VILLAGUAY</button></h2><div id="collapseVillaguay" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. VILLAGUAY - ALEM N° 479</p><p><strong>Localidad:</strong> Villaguay</p><p><strong>Email:</strong> seccionantecedentes@gmail.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03455-421180</p></div></div></div>
+                                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVictoria">VICTORIA</button></h2><div id="collapseVictoria" class="accordion-collapse collapse" data-bs-parent="#jefaturasAccordion"><div class="accordion-body"><p><strong>Ubicación:</strong> Jefatura Dptal. VICTORIA - SAN MARTINN° 23</p><p><strong>Localidad:</strong> Victoria</p><p><strong>Email:</strong> antecedentesvictoriaentrerios@outlook.com</p><p><strong>Horarios:</strong> De Lunes a Viernes 07:30 a 13:00 horas</p><p><strong>Teléfono:</strong> 03436-422222</p></div></div></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 mt-4 mt-lg-0">
+                    <iframe src="https://www.google.com/maps/d/embed?mid=1k4zbPyznvd9XCIEs3lI4fhXpb9GhCRbQ" width="100%" height="480" style="border:0; border-radius: 12px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Volver a todos los Trámites
+        </a>
+    </div>
+</div>```

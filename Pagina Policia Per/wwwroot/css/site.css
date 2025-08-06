@@ -710,3 +710,12 @@ body {
     padding-top: 8rem; /* 4rem es un espaciado generoso, similar a mt-5 */
     padding-bottom: 4rem; /* Mantenemos el espacio inferior */
 }
+
+/* ================================================================= */
+/* ==      ANULACIÓN DE HOVER SOLO PARA SECCIÓN TRÁMITES         == */
+/* ================================================================= */
+
+.tramites-container .tramite-card-final:hover {
+    transform: none; /* Anula el movimiento hacia arriba */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Devuelve la sombra a su estado original */
+}

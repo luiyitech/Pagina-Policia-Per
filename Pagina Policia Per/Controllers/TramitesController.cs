@@ -6,15 +6,14 @@ namespace Pagina_Policia_Per.Controllers
 {
     public class TramitesController : Controller
     {
-        // Esta es la sintaxis simplificada que recomienda Visual Studio
         private static readonly List<Tramite> _tramites = new()
         {
-            // CAMBIO AQUÍ: La UrlDestino ahora apunta a nuestra nueva página de detalle.
             new() { Id = 1, Titulo = "Certificado de Reincidencia", ImagenUrl = "/img/tramites/reincidencia.jpg", UrlDestino = "/Tramites/Reincidencia" },
+            new() { Id = 2, Titulo = "Certificado de Buena Conducta", ImagenUrl = "/img/tramites/buena-conducta.jpg", UrlDestino = "/Tramites/BuenaConducta" },
             
-            // El resto de los trámites permanecen igual por ahora.
-            new() { Id = 2, Titulo = "Certificado de Buena Conducta", ImagenUrl = "/img/tramites/buena-conducta.jpg", UrlDestino = "#" },
-            new() { Id = 3, Titulo = "Armas", ImagenUrl = "/img/tramites/armas.jpg", UrlDestino = "#" },
+            // CAMBIO AQUÍ: La UrlDestino ahora apunta a nuestra nueva página de armas.
+            new() { Id = 3, Titulo = "Armas", ImagenUrl = "/img/tramites/armas.jpg", UrlDestino = "/Tramites/Armas" },
+
             new() { Id = 4, Titulo = "Verificación Vehicular", ImagenUrl = "/img/tramites/verificacion.jpg", UrlDestino = "#" },
             new() { Id = 5, Titulo = "Video Vigilancia Urbana", ImagenUrl = "/img/tramites/video-vigilancia.jpg", UrlDestino = "#" },
             new() { Id = 6, Titulo = "Agencias y Vigilancia", ImagenUrl = "/img/tramites/agencias.jpg", UrlDestino = "#" },
@@ -30,10 +29,19 @@ namespace Pagina_Policia_Per.Controllers
             return View(_tramites);
         }
 
-        // ACCIÓN NUEVA AÑADIDA:
-        // Esta acción es la que se ejecuta cuando el usuario va a /Tramites/Reincidencia
-        // y devuelve la vista Reincidencia.cshtml.
         public IActionResult Reincidencia()
+        {
+            return View();
+        }
+
+        public IActionResult BuenaConducta()
+        {
+            return View();
+        }
+
+        // ACCIÓN NUEVA AÑADIDA:
+        // Responde a la URL /Tramites/Armas y muestra la nueva vista.
+        public IActionResult Armas()
         {
             return View();
         }
