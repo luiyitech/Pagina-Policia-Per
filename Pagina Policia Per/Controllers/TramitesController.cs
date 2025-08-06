@@ -9,7 +9,10 @@ namespace Pagina_Policia_Per.Controllers
         // Esta es la sintaxis simplificada que recomienda Visual Studio
         private static readonly List<Tramite> _tramites = new()
         {
-            new() { Id = 1, Titulo = "Certificado de Reincidencia", ImagenUrl = "/img/tramites/reincidencia.jpg", UrlDestino = "#" },
+            // CAMBIO AQUÍ: La UrlDestino ahora apunta a nuestra nueva página de detalle.
+            new() { Id = 1, Titulo = "Certificado de Reincidencia", ImagenUrl = "/img/tramites/reincidencia.jpg", UrlDestino = "/Tramites/Reincidencia" },
+            
+            // El resto de los trámites permanecen igual por ahora.
             new() { Id = 2, Titulo = "Certificado de Buena Conducta", ImagenUrl = "/img/tramites/buena-conducta.jpg", UrlDestino = "#" },
             new() { Id = 3, Titulo = "Armas", ImagenUrl = "/img/tramites/armas.jpg", UrlDestino = "#" },
             new() { Id = 4, Titulo = "Verificación Vehicular", ImagenUrl = "/img/tramites/verificacion.jpg", UrlDestino = "#" },
@@ -25,6 +28,14 @@ namespace Pagina_Policia_Per.Controllers
         public IActionResult Index()
         {
             return View(_tramites);
+        }
+
+        // ACCIÓN NUEVA AÑADIDA:
+        // Esta acción es la que se ejecuta cuando el usuario va a /Tramites/Reincidencia
+        // y devuelve la vista Reincidencia.cshtml.
+        public IActionResult Reincidencia()
+        {
+            return View();
         }
     }
 }

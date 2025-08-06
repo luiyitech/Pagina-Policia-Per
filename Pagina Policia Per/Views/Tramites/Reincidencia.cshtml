@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "Certificado de Reincidencia";
+}
+
+<div class="container main-content-container">
+    <div class="text-center mb-5">
+        <h1 class="display-4 fw-bold">Certificado de Reincidencia</h1>
+        <p class="lead text-muted">Pasos para gestionar el certificado de antecedentes penales.</p>
+    </div>
+
+    <!-- Información de la Dependencia -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-header bg-light fw-bold">
+            Dependencia a Cargo
+        </div>
+        <div class="card-body">
+            <p class="mb-1"><strong>Nombre:</strong> R.E.P.A.R. (División Registro Provincial de Armas)</p>
+            <p class="mb-1"><strong>Domicilio:</strong> Calle Cervantes 1104 esquina Juramento - Paraná</p>
+            <p class="mb-0"><strong>Teléfono:</strong> (0343)-4209222</p>
+        </div>
+    </div>
+
+    <h2 class="text-center mb-4">Pasos para Gestionar el Certificado</h2>
+
+    <div class="row g-4">
+        <!-- Paso 1 -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="card-title"><span class="badge bg-primary rounded-pill me-2">1</span>Pago de Arancel Provincial</h3>
+                    <p class="mt-3">Realizar una transferencia bancaria por cualquier medio digital para el arancel de la Policía de Entre Ríos.</p>
+
+                    <div class="bg-light p-3 rounded mt-auto">
+                        <p class="mb-1"><strong>CBU:</strong> 0110390620039000673804</p>
+                        <p class="mb-1"><strong>Alias:</strong> cobra.parque.nectar</p>
+                        <hr>
+                        <p class="mb-0 fs-5 fw-bold text-success">Costo: $ 1000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paso 2 -->
+        <div class="col-lg-6 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body d-flex flex-column">
+                    <h3 class="card-title"><span class="badge bg-primary rounded-pill me-2">2</span>Formulario y Arancel Nacional</h3>
+                    <p class="mt-3">Completar el formulario online en el sitio del Registro Nacional de Reincidencia y abonar el arancel correspondiente.</p>
+                    <a href="https://www.dnrec.jus.gov.ar/InicioTramite/Login/LoginCaptcha.aspx?ReturnUrl=%2fInicioTramite%2fIniciarSolicitud.aspx" target="_blank" class="btn btn-primary my-3">
+                        Ir a www.dnrec.jus.gov.ar <i class="fas fa-external-link-alt ms-2"></i>
+                    </a>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Trámite en 1 hora (express) <span class="badge bg-danger rounded-pill">$8500</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Trámite en 6 horas <span class="badge bg-warning text-dark rounded-pill">$4800</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Trámite en 24 horas <span class="badge bg-info text-dark rounded-pill">$2400</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Trámite en 5 días <span class="badge bg-secondary rounded-pill">$1000</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Aviso Importante Final -->
+    <div class="alert alert-warning d-flex align-items-center mt-5" role="alert">
+        <i class="fas fa-exclamation-triangle fa-2x me-3"></i>
+        <div>
+            <h4 class="alert-heading">¡Finalización del Trámite!</h4>
+            <p>Para finalizar, debe dirigirse a la sede de la U.E.R. más cercana con la siguiente documentación impresa:</p>
+            <ul>
+                <li>Comprobante de pago del arancel provincial ($1000).</li>
+                <li>Formulario de reincidencia y su comprobante de pago nacional.</li>
+                <li>DNI y una fotocopia del mismo.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i> Volver a todos los Trámites
+        </a>
+    </div>
+</div>
