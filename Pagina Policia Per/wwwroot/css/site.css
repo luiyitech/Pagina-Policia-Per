@@ -718,3 +718,13 @@ body {
 .main-content-container .card:hover {
         transform: none;
 }
+
+/* Evita el efecto de movimiento o cambio de estilo en la tarjeta del formulario de inicio de sesión */
+.card:hover {
+    /* Elimina cualquier transformación que pudiera causar movimiento */
+    transform: none !important;
+    /* Elimina cualquier sombreado que pudiera cambiar */
+    box-shadow: none !important;
+    /* Asegura que no haya cambios en el borde */
+    border-color: initial !important;
+}

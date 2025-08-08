@@ -34,6 +34,17 @@
                         <li class="nav-item"><a class="nav-link" asp-controller="Noticias" asp-action="Index">Noticias</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Institucional" asp-action="Index">Institucional</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                        @* Agrega el enlace/botón de Cierre de Sesión aquí - solo visible cuando está autenticado *@
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form id="logoutForm" class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
+                                    @* Incluye el token anti-falsificación por seguridad *@
+                                    @Html.AntiForgeryToken()
+                                    <button type="submit" class="nav-link btn btn-link text-white">Cerrar Sesión</button> @* Da estilo de enlace al botón *@
+                                </form>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
