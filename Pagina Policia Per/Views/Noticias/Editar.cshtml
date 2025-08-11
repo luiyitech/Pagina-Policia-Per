@@ -1,0 +1,154 @@
+﻿@model Pagina_Policia_Per.Models.Noticia // La vista espera un objeto Noticia
+
+@{
+    ViewData["Title"] = "Editar Noticia";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Asegúrate de usar tu layout principal
+}
+
+<div class="container mt-5 pt-5">
+    @* Agregamos padding superior para evitar que el menú fijo tape el título *@
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            @* Puedes ajustar el ancho de la columna *@
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Editar Noticia</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Editar" method="post" enctype="multipart/form-data">
+                        @* asp-action apunta a la acción POST de edición *@
+                        @* Muestra mensajes de error de resumen *@
+                        <div asp-validation-summary="All" class="text-danger"></div>
+
+                        @* Campo oculto para el Id de la noticia (necesario para la acción POST) *@
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Titulo" class="form-label"></label>
+                            <input asp-for="Titulo" class="form-control" />
+                            <span asp-validation-for="Titulo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Resumen" class="form-label"></label>
+                            <textarea asp-for="Resumen" class="form-control" rows="3"></textarea>
+                            <span asp-validation-for="Resumen" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Contenido" class="form-label"></label>
+                            @* Aquí podrías integrar un editor de texto enriquecido si lo deseas *@
+                            <textarea asp-for="Contenido" class="form-control" rows="10"></textarea> @* Este es el textarea que CKEditor inicializará *@
+                            <span asp-validation-for="Contenido" class="text-danger"></span>
+                        </div>
+
+                        @* Campo para la imagen principal (mostrar, eliminar y subir nueva) *@
+                        <div class="form-group mb-3">
+                            <label class="form-label">Imagen Principal</label> @* Etiqueta principal para la sección de imagen *@
+
+                            @* Mostramos la imagen actual si existe *@
+                            @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                            {
+                                <img src="@Model.ImagenUrl" alt="Imagen Principal Actual" style="max-width: 200px; display: block; margin-bottom: 10px;" />
+
+                                @* Opción para eliminar la imagen existente *@
+                                <div class="form-check mb-3">
+                                    @* Agregué mb-3 para separar del input file *@
+                                    <input class="form-check-input" type="checkbox" id="eliminarImagen" name="eliminarImagen" value="true">
+                                    <label class="form-check-label" for="eliminarImagen">
+                                        Eliminar imagen principal actual
+                                    </label>
+                                </div>
+                            }
+
+                            @* AGREGAMOS EL CAMPO PARA SUBIR UNA NUEVA IMAGEN PRINCIPAL *@
+                            <div>
+                                <label for="NuevaImagenPrincipal" class="form-label">Subir Nueva Imagen Principal</label> @* Etiqueta para el nuevo input file *@
+                                <input type="file" id="NuevaImagenPrincipal" name="NuevaImagenPrincipal" class="form-control" accept="image/*" /> @* Input de tipo file *@
+                                @* accept="image/*" sugiere al navegador que solo acepte archivos de imagen *@
+                            </div>
+
+
+                            @* Campo oculto para mantener la ImagenUrl actual si no se sube una nueva NI se elimina *@
+                            @* Este campo oculto es crucial para que la acción POST sepa la URL actual si no se toca la imagen *@
+                            <input type="hidden" asp-for="ImagenUrl" />
+
+                        </div>
+
+
+                        @* Campo para la Fecha de Publicación (puedes mostrarla o permitir editar si es necesario) *@
+                        <div class="form-group mb-3">
+                            <label asp-for="FechaPublicacion" class="form-label"></label>
+                            <input asp-for="FechaPublicacion" class="form-control" type="datetime-local" /> @* Usando input type="datetime-local" *@
+                            <span asp-validation-for="FechaPublicacion" class="text-danger"></span>
+                        </div>
+
+
+                        @* Campo para el Slug (puedes mostrarlo o permitir editar si es necesario) *@
+                        <div class="form-group mb-3">
+                            <label asp-for="Slug" class="form-label"></label>
+                            <input asp-for="Slug" class="form-control" />
+                            <span asp-validation-for="Slug" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Guardar Cambios</button>
+                            <a asp-action="Index" class="btn btn-secondary">Cancelar</a> @* Enlace para cancelar y volver a la lista *@
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* <--- UNA ÚNICA SECCIÓN SCRIPTS AQUÍ --- *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" /> @* Scripts de validación *@
+
+    @* Scripts y código de inicialización de CKEditor 5 *@
+    <!-- 1. Cargamos el script desde el CDN oficial, que es más simple y no requiere licencia -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            ClassicEditor
+                .create(document.querySelector('#Contenido'), { // Asegúrate de que el selector '#Contenido' sea correcto si cambiaste el ID del textarea
+
+                    // Con la versión CDN, no se necesita la propiedad 'licenseKey'.
+
+                    // Barra de herramientas ampliada con color e imágenes
+                    toolbar: {
+                        items: [
+                            'heading', '|',
+                            'bold', 'italic', 'underline', '|',
+                            'fontColor', 'fontBackgroundColor', '|', // Removimos estos para evitar errores de toolbarview-item-unavailable
+                            'link', 'bulletedList', 'numberedList', '|',
+                            'outdent', 'indent', '|', // Removimos 'alignment' para evitar errores de toolbarview-item-unavailable
+                            'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|',
+                            'undo', 'redo'
+                        ]
+                    },
+                    language: 'es',
+
+                    // --- CONFIGURACIÓN PARA LA SUBIDA SIMPLE DE IMÁGENES DENTRO DEL CONTENIDO ---
+                    simpleUpload: {
+                        // La URL a la que CKEditor 5 enviará las imágenes subidas.
+                        uploadUrl: '/Noticias/UploadImage' // <-- Apunta a la acción que crearemos en el controlador
+                        // Puedes agregar configuraciones adicionales si es necesario
+                    }
+                    // --- FIN DE LA CONFIGURACIÓN DE simpleUpload ---
+
+
+                })
+                .then(editor => {
+                    console.log('CKEditor fue inicializado.', editor);
+                })
+                .catch(error => {
+                    console.error('Error al inicializar CKEditor:', error);
+                });
+        });
+    </script>
+}

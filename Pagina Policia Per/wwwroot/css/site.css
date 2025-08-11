@@ -728,3 +728,70 @@ body {
     /* Asegura que no haya cambios en el borde */
     border-color: initial !important;
 }
+
+/* ============================================= */
+/* ==      ESTILOS PÁGINA DETALLE DE NOTICIA   == */
+/* ============================================= */
+
+.noticia-detalle-header img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.noticia-meta {
+    font-size: 0.9rem;
+    color: #6c757d; /* Color gris suave de Bootstrap */
+    margin-bottom: 1.5rem;
+}
+
+.noticia-contenido p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.noticia-contenido h2,
+.noticia-contenido h3,
+.noticia-contenido h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+/* Estilo para las imágenes insertadas con CKEditor */
+.noticia-contenido img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    display: block;
+    margin: 2rem auto; /* Centra las imágenes y les da espacio */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Placeholder para la futura barra lateral */
+.aside-placeholder {
+    position: sticky;
+    top: 100px; /* Se queda fijo al hacer scroll, debajo del menú */
+    background-color: #f8f9fa;
+    border: 1px dashed #dee2e6;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    color: #6c757d;
+}
+
+/* ============================================= */
+/* ==      ESTILOS PARA EL EDITOR CKEDITOR     == */
+/* ============================================= */
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+    max-height: 800px;
+    resize: vertical;
+    overflow: auto;
+}

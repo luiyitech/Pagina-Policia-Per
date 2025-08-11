@@ -1,37 +1,62 @@
-﻿<!-- Archivo: Views/Noticias/Detalle.cshtml -->
-@model Pagina_Policia_Per.Models.Noticia
+﻿@model Pagina_Policia_Per.Models.Noticia
 
 @{
     ViewData["Title"] = Model.Titulo;
 }
 
-<div class="container my-5 pt-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
+<div class="container main-content-container">
+    <div class="row justify-content-center">
 
-            <!-- Título del Artículo -->
-            <h1 class="display-5 fw-bold">@Model.Titulo</h1>
+        <!-- Columna Principal del Contenido (Ocupará todo el ancho si la columna de aside está vacía) -->
+        <div class="col-lg-8">
+            <article>
+                <!-- Título del Artículo -->
+                <header class="mb-4">
+                    <h1 class="display-5 fw-bold">@Model.Titulo</h1>
 
-            <!-- Información (Fecha) -->
-            <p class="text-muted">
-                Publicado el @Model.FechaPublicacion.ToString("dd 'de' MMMM 'de' yyyy")
-            </p>
+                    <!-- Información (Fecha) -->
+                    <div class="noticia-meta">
+                        Publicado el @Model.FechaPublicacion.ToString("dd 'de' MMMM 'de' yyyy")
+                    </div>
+                </header>
 
-            <!-- Imagen Principal -->
-            <img src="@Model.ImagenUrl" class="img-fluid rounded my-4" alt="@Model.Titulo">
+                <!-- Imagen Principal -->
+                @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+                {
+                    <figure class="noticia-detalle-header">
+                        <img src="@Model.ImagenUrl" alt="Imagen principal: @Model.Titulo" class="img-fluid" />
+                    </figure>
+                }
 
-            <!-- Contenido del Artículo -->
-            <div class="lead">
-                @Html.Raw(Model.Contenido)
+                <!-- Contenido del Artículo -->
+                <section class="noticia-contenido">
+                    @Html.Raw(Model.Contenido)
+                </section>
+
+                <hr class="my-5">
+
+                <!-- Botón para volver a la lista -->
+                <div class="text-center">
+                    <a asp-controller="Noticias" asp-action="Index" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Volver a Noticias
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Columna Lateral / Aside (Futuro espacio para anuncios) -->
+        <!-- MIENTRAS ESTE DIV ESTÉ VACÍO, LA COLUMNA ANTERIOR OCUPARÁ MÁS ESPACIO -->
+        <div class="col-lg-4">
+
+            <!-- CUANDO QUIERAS ACTIVAR EL ASIDE, PON EL CONTENIDO AQUÍ DENTRO -->
+            <!-- Por ejemplo: -->
+            <!--
+            <div class="aside-placeholder">
+                <p class="mb-0">Futuro espacio para anuncios y enlaces de utilidad.</p>
             </div>
-
-            <hr class="my-5">
-
-            <!-- Botón para volver a la lista -->
-            <a asp-controller="Noticias" asp-action="Index" class="btn btn-secondary">
-                <i class="fas fa-arrow-left me-2"></i>Volver a Noticias
-            </a>
+            -->
 
         </div>
+
     </div>
 </div>

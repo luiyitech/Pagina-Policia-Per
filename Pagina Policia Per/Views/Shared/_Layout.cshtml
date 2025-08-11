@@ -34,14 +34,23 @@
                         <li class="nav-item"><a class="nav-link" asp-controller="Noticias" asp-action="Index">Noticias</a></li>
                         <li class="nav-item"><a class="nav-link" asp-controller="Institucional" asp-action="Index">Institucional</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-                        @* Agrega el enlace/botón de Cierre de Sesión aquí - solo visible cuando está autenticado *@
-                        @if (User.Identity.IsAuthenticated)
+
+                        <!-- ====================================================== -->
+                        <!-- ==      CÓDIGO AÑADIDO PARA EL ENLACE DEL DASHBOARD   == -->
+                        <!-- ====================================================== -->
+                        @if (User.Identity != null && User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" asp-controller="Noticias" asp-action="Admin">Dashboard</a>
+                            </li>
+                        }
+                        <!-- ====================================================== -->
+                        @if (User.Identity != null && User.Identity.IsAuthenticated)
                         {
                             <li class="nav-item">
                                 <form id="logoutForm" class="form-inline" asp-controller="Account" asp-action="Logout" method="post">
-                                    @* Incluye el token anti-falsificación por seguridad *@
                                     @Html.AntiForgeryToken()
-                                    <button type="submit" class="nav-link btn btn-link text-white">Cerrar Sesión</button> @* Da estilo de enlace al botón *@
+                                    <button type="submit" class="nav-link btn btn-link text-white">Cerrar Sesión</button>
                                 </form>
                             </li>
                         }
@@ -51,13 +60,9 @@
         </nav>
     </header>
 
-    <!-- ======================================================= -->
-    <!--           ¡AQUÍ ESTÁ LA CORRECCIÓN CLAVE!             -->
-    <!-- ======================================================= -->
     <main role="main">
         @RenderBody()
     </main>
-    <!-- ======================================================= -->
 
     <footer id="contacto" class="bg-dark text-white pt-5 pb-4">
         <div class="container text-center text-md-start">

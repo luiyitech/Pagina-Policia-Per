@@ -26,7 +26,6 @@
 
                 <div class="mb-3">
                     <label asp-for="Contenido" class="form-label"></label>
-                    <!-- ¡ESTA LÍNEA ES LA CLAVE! Asegúrate de que tenga el id="editorContenido" -->
                     <textarea id="editorContenido" asp-for="Contenido" class="form-control" rows="10"></textarea>
                     <span asp-validation-for="Contenido" class="text-danger"></span>
                 </div>
@@ -47,37 +46,77 @@
 </div>
 
 @section Scripts {
-    <!-- 1. Cargamos el script desde el CDN oficial, que es más simple y no requiere licencia -->
-    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/classic/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/41.4.2/super-build/ckeditor.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // 2. ¡CORRECCIÓN! Usamos 'ClassicEditor' directamente, como lo requiere la versión del CDN.
-            ClassicEditor
-                .create(document.querySelector('#editorContenido'), {
+        CKEDITOR.ClassicEditor.create(document.querySelector('#editorContenido'), {
+            removePlugins: [
+                'AIAssistant', 'CKBox', 'CKFinder', 'EasyImage', 'RealTimeCollaborativeComments',
+                'RealTimeCollaborativeTrackChanges', 'RealTimeCollaborativeRevisionHistory',
+                'PresenceList', 'Comments', 'TrackChanges', 'TrackChangesData', 'RevisionHistory',
+                'Pagination', 'WProofreader', 'MathType', 'SlashCommand', 'Template',
+                'DocumentOutline', 'FormatPainter', 'TableOfContents', 'PasteFromOfficeEnhanced',
+                'MultiLevelList',
+                'CaseChange'
+            ],
+            toolbar: {
+                items: [
+                    'heading', '|', 'bold', 'italic', 'underline', '|', 'fontColor',
+                    'fontBackgroundColor', '|', 'link', 'bulletedList', 'numberedList', '|',
+                    'outdent', 'indent', 'alignment', '|',
+                    'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|', // imageUpload está aquí
+                    'undo', 'redo'
+                ]
+            },
+            language: 'es',
+            simpleUpload: {
+                uploadUrl: '/Noticias/UploadImage'
+            },
 
-                    // Con la versión CDN, no se necesita la propiedad 'licenseKey'.
-
-                    // Barra de herramientas ampliada con color e imágenes
-                    toolbar: {
-                        items: [
-                            'heading', '|',
-                            'bold', 'italic', 'underline', '|',
-                            'fontColor', 'fontBackgroundColor', '|',
-                            'link', 'bulletedList', 'numberedList', '|',
-                            'outdent', 'indent', 'alignment', '|',
-                            'imageUpload', 'blockQuote', 'insertTable', 'mediaEmbed', '|',
-                            'undo', 'redo'
-                        ]
+            // --- NUEVA CONFIGURACIÓN PARA IMÁGENES Y REDIMENSIÓN ---
+            image: {
+                toolbar: [ // Esto es el toolbar que aparece cuando SE SELECCIONA UNA IMAGEN
+                    'imageTextAlternative', // Para texto alternativo (accesibilidad)
+                    'toggleImageCaption',   // Para añadir/quitar pie de foto
+                    'imageStyle:inline',    // Estilo de imagen: en línea con texto
+                    'imageStyle:block',     // Estilo de imagen: bloque (centrada)
+                    'imageStyle:side',      // Estilo de imagen: a un lado (texto fluye)
+                    'imageStyle:wrapText',  // Estilo de imagen: con texto envolvente (para flotar)
+                    'imageStyle:breakText', // Estilo de imagen: rompe texto (para que no fluya)
+                    'linkImage',            // Para enlazar la imagen
+                    'imageResize'           // ¡Este activa el redimensionamiento!
+                ],
+                // Aquí puedes definir los tamaños de redimensión predefinidos
+                resizeOptions: [
+                    {
+                        name: 'imageResize:original',
+                        label: 'Tamaño Original',
+                        value: null // null significa tamaño original
                     },
-                    language: 'es'
-                })
-                .then(editor => {
-                    console.log('CKEditor fue inicializado.', editor);
-                })
-                .catch(error => {
-                    console.error('Error al inicializar CKEditor:', error);
-                });
+                    {
+                        name: 'imageResize:25',
+                        label: '25%',
+                        value: '25%'
+                    },
+                    {
+                        name: 'imageResize:50',
+                        label: '50%',
+                        value: '50%'
+                    },
+                    {
+                        name: 'imageResize:75',
+                        label: '75%',
+                        value: '75%'
+                    }
+                ]
+            },
+
+        })
+        .then(editor => {
+            console.log('CKEditor fue inicializado correctamente.', editor);
+        })
+        .catch(error => {
+            console.error('Error al inicializar CKEditor:', error);
         });
     </script>
 }
