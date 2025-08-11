@@ -1,14 +1,12 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Pagina_Policia_Per.Data; // Asegúrate de que este namespace coincida con la ubicación de tu ApplicationDbContext
-using Microsoft.Extensions.DependencyInjection; // Necesario para GetRequiredService y CreateScope
-using Microsoft.Extensions.Logging; // Necesario para ILogger
-using System; // Necesario para Environment
+using Pagina_Policia_Per.Data; 
+using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.Logging;
+using System; 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Esta sección es donde agregas la mayoría de tus servicios
 builder.Services.AddControllersWithViews();
 
 // ==================================================================
@@ -22,8 +20,6 @@ builder.Services.AddControllersWithViews();
 // builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //     options.UseSqlServer(connectionString)); // Configuración para usar SQL Server
 
-// Configura Entity Framework Core para usar la base de datos en memoria (para pruebas)
-// !!! IMPORTANTE: Para ejecutar la aplicación con SQL Server, COMENTA esta línea y DESCOMENTA las anteriores.
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseInMemoryDatabase("IdentityDatabase")); // <--- DESCOMENTAMOS ESTA LÍNEA PARA EL MODO PRUEBA
                                                       // Nombre de la base de datos en memoria para pruebas
@@ -41,20 +37,10 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.AccessDeniedPath = "/Account/AccessDenied";
 });
 
-// ==================================================================
-// FIN de la configuración de Identity y EF Core
-// ==================================================================
-
 
 var app = builder.Build();
 
-// ==================================================================
-// COMIENZO: Código de inicialización para crear Roles y Usuario Administrador (Solo para desarrollo/pruebas)
-// Este bloque se ejecuta al inicio de la aplicación.
-// IMPORTANTE: Si cambias entre base de datos en memoria y SQL Server,
-// este código se ejecutará cada vez que inicies la aplicación.
-// Considera cómo quieres manejar la creación de usuarios/roles en la base de datos real.
-// ==================================================================
+
 using (var scope = app.Services.CreateScope())
 {
     var serviceProvider = scope.ServiceProvider;
@@ -65,17 +51,14 @@ using (var scope = app.Services.CreateScope())
 
         // Crea el rol "Admin" si no existe
         const string adminRoleName = "Admin";
-        // Usamos GetAwaiter().GetResult() porque este código se ejecuta en un bloque síncrono
-        // aunque las operaciones de Identity/EF Core son asíncronas.
-        // Es una práctica común en código de inicialización síncrono que necesita llamar a métodos asíncronos.
-        if (!roleManager.RoleExistsAsync(adminRoleName).GetAwaiter().GetResult())
+               if (!roleManager.RoleExistsAsync(adminRoleName).GetAwaiter().GetResult())
         {
             roleManager.CreateAsync(new IdentityRole(adminRoleName)).GetAwaiter().GetResult();
         }
 
         // Crea un usuario administrador si no existe
-        const string adminEmail = "admin@tudominio.com"; // !!! CAMBIA este correo
-        const string adminPassword = "LuiyiTech123!"; // !!! CAMBIA esta contraseña a algo SEGURO
+        const string adminEmail = "admin@tudominio.com";
+        const string adminPassword = "LuiyiTech123!";
 
         var adminUser = userManager.FindByNameAsync(adminEmail).GetAwaiter().GetResult();
         if (adminUser == null)
@@ -107,13 +90,9 @@ using (var scope = app.Services.CreateScope())
         logger.LogError(ex, "Ocurrió un error al inicializar la base de datos Identity.");
     }
 }
-// ==================================================================
-// FIN: Código de inicialización para crear Roles y Usuario Administrador
-// ==================================================================
 
 
-// Configure the HTTP request pipeline.
-// Esta sección es donde configuras el pipeline de solicitud (middleware)
+// Pipeline de solicitud (middleware)
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
@@ -125,15 +104,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// ==================================================================
-// COMIENZO: Asegúrate de que Authentication y Authorization estén en el orden correcto
-// Esto DEBE estar dentro del bloque donde se configura el pipeline (app.Use...)
-// ==================================================================
+
 app.UseAuthentication(); // Habilita la autenticación
 app.UseAuthorization();  // Habilita la autorización
-// ==================================================================
-// FIN: Asegúrate de que Authentication y Authorization estén en el orden correcto
-// ==================================================================
 
 
 app.MapControllerRoute(

@@ -18,11 +18,6 @@ namespace Pagina_Policia_Per.Models
         [Required(ErrorMessage = "El contenido es obligatorio.")]
         public string Contenido { get; set; }
 
-        // Comentamos o eliminamos la propiedad antigua que ya no usamos.
-        // public string ImagenUrl { get; set; }
-
-        // ¡AÑADIMOS LA NUEVA PROPIEDAD PARA EL ARCHIVO!
-        // Ahora, cuando la vista busque "ImagenPrincipal", la encontrará.
         [Required(ErrorMessage = "La imagen principal es obligatoria.")]
         [Display(Name = "Imagen Principal")] // Esto mejora el texto que se muestra en la etiqueta <label>
         public IFormFile ImagenPrincipal { get; set; }

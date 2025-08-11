@@ -15,11 +15,9 @@ namespace Pagina_Policia_Per.Data
         // ===================================================================
         //           AGREGAMOS ESTE DbSet para tu modelo Noticia
         // ===================================================================
-        public DbSet<Noticia> Noticia { get; set; } // <-- AGREGAMOS ESTA LÍNEA
-        // ===================================================================
+        public DbSet<Noticia> Noticia { get; set; } // 
+       
 
-        // Si en el futuro agregas más modelos de aplicación, también agregarías un DbSet para cada uno aquí.
-        // Por ejemplo:
-        // public DbSet<Pagina_Policia_Per.Models.OtroModelo> OtroModelo { get; set; }
+       
     }
 }
